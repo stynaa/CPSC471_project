@@ -25,13 +25,15 @@ CREATE TABLE `Login_data` (
     `username` varchar(15) NOT NULL,
     `password_sha` char(255) NOT NULL,
     `last_login` TIMESTAMP,
-    `num_failed_attempts` int UNSIGNED AUTO_INCREMENT,
+    `num_failed_attempts` int UNSIGNED,
+    PRIMARY KEY (username),
     FOREIGN KEY (username) REFERENCES User(username)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `Parent`;
 CREATE TABLE `Parent` (
     `username` varchar(15) NOT NULL,
+    PRIMARY KEY (username),
     FOREIGN KEY (username) REFERENCES User(username)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -44,6 +46,7 @@ CREATE TABLE Tutor (
     street varchar(255) NOT NULL,
     city varchar(100) NOT NULL,
     postal_code varchar(6) NOT NULL,
+    PRIMARY KEY (username),
     FOREIGN KEY (username) REFERENCES User(username)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -52,5 +55,6 @@ CREATE TABLE Tutor_topic_knowledge (
     username varchar(15) NOT NULL,
     topic_id int UNSIGNED NOT NULL,
     knowledge_level int UNSIGNED NOT NULL,
+    PRIMARY KEY (username),
     FOREIGN KEY (username) REFERENCES User(username)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
