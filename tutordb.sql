@@ -16,7 +16,7 @@ CREATE TABLE `User` (
   `email` varchar(255) NOT NULL,
   `phone` int(10) NOT NULL,
   `first_name` varchar(255) NOT NULL,
-  'last_name' varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
   PRIMARY KEY  (username)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
