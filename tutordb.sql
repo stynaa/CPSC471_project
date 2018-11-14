@@ -18,7 +18,7 @@ CREATE TABLE `User` (
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   PRIMARY KEY  (username)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `Login_data`;
 CREATE TABLE `Login_data` (
@@ -28,14 +28,14 @@ CREATE TABLE `Login_data` (
     `num_failed_attempts` int UNSIGNED,
     PRIMARY KEY (username),
     FOREIGN KEY (username) REFERENCES User(username)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `Parent`;
 CREATE TABLE `Parent` (
     `username` varchar(15) NOT NULL,
     PRIMARY KEY (username),
     FOREIGN KEY (username) REFERENCES User(username)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS Tutor;
 CREATE TABLE Tutor (
@@ -48,7 +48,7 @@ CREATE TABLE Tutor (
     postal_code varchar(6) NOT NULL,
     PRIMARY KEY (username),
     FOREIGN KEY (username) REFERENCES User(username)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS Tutor_topic_knowledge;
 CREATE TABLE Tutor_topic_knowledge (
@@ -58,7 +58,7 @@ CREATE TABLE Tutor_topic_knowledge (
     PRIMARY KEY (username,topic_id),
     FOREIGN KEY (topic_id) REFERENCES Topic(topic_id),
     FOREIGN KEY (username) REFERENCES User(username)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS Topic;
 CREATE TABLE Topic (
@@ -66,7 +66,7 @@ CREATE TABLE Topic (
     name varchar(50) NOT NULL,
     description varchar(500),
     PRIMARY KEY (topic_id)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS Review;
 CREATE TABLE Review (
@@ -78,7 +78,7 @@ CREATE TABLE Review (
     PRIMARY KEY (parent_uname,tutor_uname),
     FOREIGN KEY (parent_uname) REFERENCES Parent(username),
     FOREIGN KEY (tutor_uname) REFERENCES Tutor(username)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS Student;
 CREATE TABLE Student (
@@ -89,7 +89,7 @@ CREATE TABLE Student (
     parent_uname varchar(15) NOT NULL,
     PRIMARY KEY (parent_uname),
     FOREIGN KEY (parent_uname) REFERENCES Parent(username)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS Class;
 CREATE TABLE Class (
@@ -102,7 +102,7 @@ CREATE TABLE Class (
     PRIMARY KEY (class_id),
     FOREIGN KEY (tutor_uname) REFERENCES Tutor(username),
     FOREIGN KEY (topic_id) REFERENCES Topic(topic_id)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS Enrolled;
 CREATE TABLE Enrolled (
@@ -112,7 +112,7 @@ CREATE TABLE Enrolled (
     PRIMARY KEY (student_id,class_id),
     FOREIGN KEY (student_id) REFERENCES Student(student_id),
     FOREIGN KEY (class_id) REFERENCES Class(class_id)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS Session;
 CREATE TABLE Session (
@@ -125,7 +125,7 @@ CREATE TABLE Session (
     FOREIGN KEY (class_id) REFERENCES Class(class_id),
     FOREIGN KEY (location_id) REFERENCES Location(location_id),
     FOREIGN KEY (sched_item_id) REFERENCES Schedule_item(schitem_id)
-)  ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+)  ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS Location;
 CREATE TABLE Location (
@@ -136,7 +136,7 @@ CREATE TABLE Location (
     postal_code varchar(6) NOT NULL,
     building_name varchar(100),
     PRIMARY KEY (location_id)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS Schedule_item;
 CREATE TABLE Schedule_item (
@@ -149,4 +149,4 @@ CREATE TABLE Schedule_item (
     sessionitem_flag boolean NOT NULL,
     PRIMARY KEY (schitem_id),
     FOREIGN KEY (tutor_uname) REFERENCES Tutor(username)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
