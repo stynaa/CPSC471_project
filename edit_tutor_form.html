@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>  
+<html>
+<head>
+<style>
+.error {color: #FF0000;}
+</style>
+</head>
+<body>  
+
+<h2>Edit User </h2>
+<p><span class="error">* required field</span></p>
+<form method="post" action="edit_tutor.php">  
+  Username: <input type="text" name="username" value="<?php echo $username;?>">
+  <span class="error">* <?php echo $usernameErr;?></span>
+  <br><br>
+  Biography: <textarea name="comment" rows="5" cols="40"><?php echo $bio;?></textarea>
+  <br><br>
+  Education: <input type="text" name="education" value="<?php echo $education;?>">
+  <span class="error">* <?php echo $educationErr;?></span>
+  <br><br>
+  House Number: <input type="text" name="house_num" value="<?php echo $house_num;?>">
+  <span class="error">* <?php echo $house_numErr;?></span>
+  <br><br>
+  Street Name: <input type="text" name="street" value="<?php echo $street;?>">
+  <span class="error">* <?php echo $streetErr;?></span>
+  <br><br>
+  City: <input type="text" name="city" value="<?php echo $city;?>">
+  <span class="error">* <?php echo $cityErr;?></span>
+  <br><br>
+  <input type="submit" name="submit" value="Submit">  
+</form>
+
+<?php
+echo "<h2>Your Input:</h2>";
+echo $username;
+echo "<br>";
+echo $bio;
+echo "<br>";
+echo $education;
+echo "<br>";
+echo $house_num;
+echo "<br>";
+echo $street;
+echo "<br>";
+echo $city;
+?>
+
+</body>
+</html>
