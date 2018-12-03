@@ -37,7 +37,7 @@ CREATE TABLE Location (
     postal_code char(6) NOT NULL,
     building_name varchar(64),
     PRIMARY KEY (location_id)
-) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS Login_data;
 CREATE TABLE Login_data (
@@ -104,7 +104,7 @@ CREATE TABLE Tutor_topic_knowledge (
 
 DROP TABLE IF EXISTS Class;
 CREATE TABLE Class (
-    class_id int UNSIGNED,
+    class_id int UNSIGNED AUTO_INCREMENT,
     name varchar(64) NOT NULL,
     description varchar(500),
     enroll_open boolean NOT NULL DEFAULT TRUE,
@@ -113,7 +113,7 @@ CREATE TABLE Class (
     PRIMARY KEY (class_id),
     FOREIGN KEY (tutor_uname) REFERENCES Tutor(username),
     FOREIGN KEY (topic_id) REFERENCES Topic(topic_id)
-) ENGINE=InnoDB AUTO_INCREMENT=200 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS Schedule_item;
 CREATE TABLE Schedule_item (
@@ -125,7 +125,7 @@ CREATE TABLE Schedule_item (
     sessionitem_flag boolean NOT NULL,
     PRIMARY KEY (schitem_id),
     FOREIGN KEY (tutor_uname) REFERENCES Tutor(username)
-) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS Enrolled;
 CREATE TABLE Enrolled (
