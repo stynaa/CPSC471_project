@@ -1,9 +1,10 @@
 <?php
-    $servername = "104.157.39.239"; //104.157.39.239
+    session_start();
+    $servername = "104.157.39.239"; //"192.168.1.69" | 104.157.39.239
     $username = "cpsc471";
     $password = "pw";
     $database = "tutorDB";
-    $port = 19239;
+    $port = 19239; //3306 | 19239;
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $database, $port);
@@ -25,6 +26,17 @@
             $ctr++;
         }
         echo "},\"numRows\":" . $ctr . "}";
+    }
+
+    function getUsername(){
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if(array_key_exists('username', $_SESSION)){
+            return $_SESSION["username"];
+        } else {
+            return -1;
+        }
     }
 
 ?>

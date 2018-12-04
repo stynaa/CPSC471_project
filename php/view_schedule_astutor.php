@@ -1,3 +1,5 @@
+<!--DEPRECATED-->
+
 <?php
 
 require "./conn.php";
@@ -11,7 +13,7 @@ if (mysqli_connect_errno($con))
   }
 
   $username = $_SESSION["username"];
-  $result = mysqli_query($con,"SELECT * FROM Schedule WHERE tutor_uname=".$username);  
+  $result = mysqli_query($con,"SELECT * FROM Schedule WHERE tutor_uname=".$username);
 
   if ($con->query($result) === TRUE) {
     echo "New record created successfully";
