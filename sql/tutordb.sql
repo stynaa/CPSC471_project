@@ -43,7 +43,7 @@ DROP TABLE IF EXISTS Login_data;
 CREATE TABLE Login_data (
     username varchar(15),
     password_sha varchar(255) NOT NULL,
-    last_login TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    last_login TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     num_failed_attempts int UNSIGNED,
     PRIMARY KEY (username),
     FOREIGN KEY (username) REFERENCES User(username)
