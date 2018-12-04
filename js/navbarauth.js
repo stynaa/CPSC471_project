@@ -37,7 +37,8 @@ function login() {
             if(x.status === "Success") {
                 showLoggedIn(x.username);
             } else {
-                document.getElementById("login-info").innerHTML = "Login failed.";
+                //todo: don't be annoying..
+                alert("Login failed.");
             }
         }
     };
@@ -66,11 +67,16 @@ function logout() {
     xhttp.send();
 }
 
+function signup() {
+    document.location.assign("signup.html");
+}
+
 function showlogin() {
     document.getElementById("login").innerHTML =
         '<div><p>Username</p> <input id="username" type="text" name="username" value="" placeholder="Username" > </div>\
         <div><p>Password</p> <input id="pw" type="password" name="pw" value="" placeholder="Password"> </div>\
-        <button type="button" onclick="login()">Log in</button>';
+        <button type="button" onclick="login()">Log in</button> \
+        <button type="button" onclick="signup()">Sign up</button>';
 }
 
 function createNavBar(){
@@ -79,7 +85,7 @@ function createNavBar(){
     navbar.setAttribute("class", "clearfix");
     let bodyRef = document.getElementsByTagName("body")[0]
     bodyRef.prepend(navbar);
-    navbar.innerHTML = 'This is a test navbar';
+    navbar.innerHTML = '<h1 style="float:left; padding-left: 10px;">MinTuro</h1>';
 
     let loginform=document.createElement("form");
     loginform.setAttribute("id", "login");
