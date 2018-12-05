@@ -5,8 +5,7 @@ require "php/testdata.php";
 <h2>Write Review:</h2>
 Select Tutor:<br><select id="tutor_uname">
 <?php
-/*
-    $stmt = $conn->prepare("SELECT student_id, first_name, last_name FROM Student WHERE parent_uname=(?)");
+    $stmt = $conn->prepare("SELECT DISTINCT c.tutor_uname FROM Class AS c WHERE c.class_id IN (SELECT e.class_id FROM Enrolled AS e WHERE e.student_id IN (SELECT s.student_id FROM Student AS s WHERE s.parent_uname = ?))");
     $stmt->bind_param("s", $parent_uname);
 
     $parent_uname = $_SESSION["username"];
@@ -18,11 +17,9 @@ Select Tutor:<br><select id="tutor_uname">
       }
 
     while ($row = $result->fetch_assoc()) {
-        echo "<option value=\"" . $row["student_id"] . "\">" . $row["first_name"] . " " . $row["last_name"] . "</option>";
+        echo '<option value="' . $row["tutor_uname"] . '">' . $row["tutor_uname"] . '</option>';
     }
-  //$result = $stmt->get_result();
-  //echo_json_encode_db($result);
-*/
+
   include "disconndb.php";
   ?>
 </select><br><br>
