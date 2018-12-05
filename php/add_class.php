@@ -13,7 +13,7 @@ if (mysqli_connect_errno($conn))
   //@class_id, @name, @description, @enroll_open, @tutor_name, @topic
 
   // prepare and bind
-  $stmt = $conn->prepare("INSERT INTO Class(name, description, enroll_open, tutor_name, topic) VALUES (?, ?, ?, ?, ?)");
+  $stmt = $conn->prepare("INSERT INTO Class(name, description, enroll_open, tutor_uname, topic_id) VALUES (?, ?, ?, ?, ?)");
   $stmt->bind_param("ssbsi", $name, $description, $enroll_open, $tutor_uname, $topic);
 
   $class_idErr = $nameErr = $descriptionErr = $enroll_openErr = $tutor_unameErr = $topicErr = "";
@@ -56,9 +56,9 @@ if (mysqli_connect_errno($conn))
   }
 
   if ($stmt->execute() === TRUE) {
-    echo "{\"return\": \"SUCCESS\"}";
+    echo '{"success": true, "err": "none"}';
   } else {
-    echo "e";
+    echo '{"success": false, "err": ' . $class_idErr . $nameErr . $descriptionErr . $enroll_openErr . $tutor_unameErr . $topicErr .'}';
   }
 
   //$result = $stmt->get_result();
