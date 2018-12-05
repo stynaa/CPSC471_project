@@ -61,3 +61,24 @@ function loadAddTopicKnowledgeForm() {
     xhttp.open("POST", "../php/add_topicknow.php", true);
     xhttp.send(formData);
 }
+
+function loadAddStudentForm() {
+    var formData = new FormData();
+    formData.append("dob", document.getElementById('dob').value);
+    formData.append("first_name", document.getElementById('first_name').value);
+    formData.append("last_name", document.getElementById('last_name').value);
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let result = JSON.parse(this.responseText);
+            if (result.success) {
+                console.log("Success: student added.");
+            } else {
+                console.log(result.err);
+            }
+        }
+    };
+    xhttp.open("POST", "../php/add_student.php", true);
+    xhttp.send(formData);
+}
