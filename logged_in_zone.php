@@ -16,8 +16,16 @@ if(!array_key_exists('username', $_SESSION)){
         <title></title>
     </head>
     <body>
-        <div id="btns">
-
+        <div id="parentbtns" style="display:none;">
+            <button onclick="loadAddStudent()">Add Student</button>
+            <button onclick="loadAddReview()">Add Review</button>
+        </div>
+        <div id="tutorbtns" style="display:none;">
+            <button onclick="loadAddClass()">Add Class</button>
+            <button onclick="loadAddLocation()">Add Location</button>
+            <button onclick="loadAddSession()">Add Session</button>
+            <button onclick="loadAddTopic()">Add Topic</button>
+            <button onclick="loadAddTopicKnow()">Add Topic Knowledge</button>
         </div>
         <form id="form">
         </form>
@@ -101,33 +109,22 @@ if(!array_key_exists('username', $_SESSION)){
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         let x = JSON.parse(this.responseText);
-                        if(x.istutor) {
-                            document.getElementById("btns").innerHTML =
-                                '<button onclick="loadAddClass()">Add Class</button> \
-                                <button onclick="loadAddLocation()">Add Location</button> \
-                                <button onclick="loadAddSession()">Add Session</button> \
-                                <button onclick="loadAddTopic()">Add Topic</button> \
-                                <button onclick="loadAddTopicKnow()">Add Topic Knowledge</button>'
-                                + document.getElementById("btns").innerHTML;
+                        if (x.istutor == true) {
+                            document.getElementById("tutorbtns").setAttribute("style", "display:inline;");
                         }
                     }
-                };
+                }
                 xhttp.open("GET", "php/auth/checktutor.php", true);
                 xhttp.send();
             }
 
             function showParentButtons() {
-
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         let x = JSON.parse(this.responseText);
-
                         if(x.isparent) {
-                            document.getElementById("btns").innerHTML =
-                                '<button onclick="loadAddStudent()">Add Student</button> \
-                                <button onclick="loadAddReview()">Add Review</button>'
-                                + document.getElementById("btns").innerHTML;
+                            document.getElementById("parentbtns").setAttribute("style", "display:inline;")
                         }
                     }
                 };
