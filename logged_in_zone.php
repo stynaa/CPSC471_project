@@ -22,6 +22,10 @@ if(!array_key_exists('username', $_SESSION)){
         <button onclick="loadAddStudent()">Add Student</button>
         <button onclick="loadAddTopic()">Add Topic</button>
         <button onclick="loadAddTopicKnow()">Add Topic Knowledge</button>
+        <!--New buttons-->
+        <button onclick="loadEditStudent()">Edit Student Information</button>
+        <button onclick="loadEditClass()">Edit Class</button>
+        <button onclick="loadEditSession()">Edit Session</button>
         <form id="form">
 
         </form>
@@ -64,7 +68,7 @@ if(!array_key_exists('username', $_SESSION)){
                         document.getElementById("form").innerHTML = this.responseText;
                     }
                 };
-                xhttp.open("GET", "add_session_form.html", true);
+                xhttp.open("GET", "php/add_session_form.php", true);
                 xhttp.send();
             }
             function loadAddStudent() {
@@ -96,6 +100,38 @@ if(!array_key_exists('username', $_SESSION)){
                     }
                 };
                 xhttp.open("GET", "php/add_topicknow_form.php", true);
+                xhttp.send();
+            }
+
+            //new functions
+            function loadEditStudent() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("form").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "php/edit_student_form.php", true);
+                xhttp.send();
+            }
+            function loadEditClass() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("form").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "php/edit_class_form.php", true);
+                xhttp.send();
+            }
+            function loadEditSession() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("form").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "php/edit_session_form.php", true);
                 xhttp.send();
             }
 
