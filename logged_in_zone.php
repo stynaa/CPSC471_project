@@ -53,9 +53,9 @@ if(!array_key_exists('username', $_SESSION)){
             }
 
             //Note: This is very not secure..
-            function viewClasses(studentid) {
+            function viewClasses(student_id) {
                 var formData = new FormData();
-                formData.append("student_id", studentid);
+                formData.append("student_id", student_id);
 
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
@@ -79,6 +79,20 @@ if(!array_key_exists('username', $_SESSION)){
                     }
                 };
                 xhttp.open("POST", "php/dropClass.php", true);
+                xhttp.send(formData);
+            }
+
+            function viewSessions(student_id) {
+                var formData = new FormData();
+                formData.append("student_id", student_id);
+
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("query-results").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("POST", "php/viewStudentSessions.php", true);
                 xhttp.send(formData);
             }
         </script>
