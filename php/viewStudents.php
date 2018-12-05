@@ -17,6 +17,7 @@ $username = getUsername();
 if($username != -1) {
     if ($stmt->execute()) {
         $result = $stmt->get_result();
+        echo '<h3 class="title"> Your Students: </h3>';
         echo "<table>";
         echo '<th>First Name</th><th>Last Name</th><th>Date of Birth</th><th>Student ID</th><th>View Classes</th><th>View Sessions</th>';
         while($x = $result->fetch_assoc()) {
