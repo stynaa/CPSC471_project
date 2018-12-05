@@ -64,7 +64,7 @@ nav > #login {
     color: #4CAF50;
 }
 
-.button {
+.navb {
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
@@ -75,7 +75,7 @@ nav > #login {
     font-size: 16px;
   }
 
-.button:hover {
+.navb:hover {
     background-color: #FFFFFF;
     color: #4CAF50;
 }
