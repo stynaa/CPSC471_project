@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/master.css">
+        <title></title>
+    </head>
+    <body>
+
+        <h1>Sign up</h1>
+        <input type="button" id="psu" value="Parent" onclick="loadParentSignup()"></input>
+        <input type="button" id="tsu" value="Tutor" onclick="loadTutorSignup()"></input>
+
+        <form id="signupform">
+
+
+        </form>
+
+
+        <script type="text/javascript">
+            function loadUserSignup() {
+                document.getElementById("signupform").innerHTML +=
+                    'Username: <input type="text" id="uname" value=""><br> \
+                    Password: <input type="password" id="pwsignup" value=""><br> \
+                    Repeat Password: <input type="password" id="pwcheck" value=""><br> \
+                    Email: <input type="email" id="email" value=""><br> \
+                    Phone: <input type="tel" id="phone" value=""><br> \
+                    First Name: <input type="text" id="fname" value=""><br> \
+                    Last Name: <input type="text" id="lname" value=""><br>';
+            }
+
+            function loadParentSignup() {
+                document.getElementById("signupform").innerHTML = "";
+                loadUserSignup();
+                document.getElementById("signupform").innerHTML +=
+                    '<input type="button" value="Sign up!" onclick="signupParent()"></input>';
+            }
+
+            function loadTutorSignup() {
+                document.getElementById("signupform").innerHTML = "";
+                loadUserSignup();
+                document.getElementById("signupform").innerHTML +=
+                    'Bio:<br> <textarea id="bio" rows="8" cols="80"></textarea><br> \
+                    Education:<br> <textarea id="education" rows="8" cols="80"></textarea><br>\
+                    House number: <input type="number" id="housenum" value=""><br> \
+                    Street: <input type="text" id="street" value=""><br>\
+                    City: <input type="text" id="city" value=""><br>\
+                    Postal Code: <input type="text" id="pcode" value=""><br>' +
+                    '<input type="button" value="Sign up!" onclick="signupTutor()"></input>';
+            }
+
+            function signupParent() {
+                var formData = new FormData();
+                formData.append("username", document.getElementById('uname').value);
+                formData.append("pw", document.getElementById('pwsignup').value);
+                formData.append("pwcheck", document.getElementById('pwcheck').value);
+                formData.append("email", document.getElementById('email').value);
+                formData.append("phone", document.getElementById('phone').value);
+                formData.append("first_name", document.getElementById('fname').value);
+                formData.append("last_name", document.getElementById('lname').value);
+
+
+                let xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log(this.responseText);
+                        let x = JSON.parse(this.responseText);
+                        console.log(x);
+                    }
+                };
+                xhttp.open("POST", "php/auth/signupParent.php", true);
+                xhttp.send(formData);
+            }
+
+            function signupTutor() {
+                let xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        let x = JSON.parse(this.responseText);
+
+                    }
+                };
+                xhttp.open("POST", "php/auth/signupTutor.php", true);
+                xhttp.send();
+            }
+
+        </script>
+        <script type="text/javascript" src="js/navbarauth.js"></script>
+    </body>
+</html>
