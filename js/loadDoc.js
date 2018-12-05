@@ -16,7 +16,7 @@ function loadAddLocationForm() {
             }
         }
     };
-    xhttp.open("POST", "../php/add_location.php", true);
+    xhttp.open("POST", "php/add_location.php", true);
     xhttp.send(formData);
 }
 
@@ -38,7 +38,7 @@ function loadAddClassForm() {
             }
         }
     };
-    xhttp.open("POST", "../php/add_class.php", true);
+    xhttp.open("POST", "php/add_class.php", true);
     xhttp.send(formData);
 }
 
@@ -58,7 +58,7 @@ function loadAddTopicKnowledgeForm() {
             }
         }
     };
-    xhttp.open("POST", "../php/add_topicknow.php", true);
+    xhttp.open("POST", "php/add_topicknow.php", true);
     xhttp.send(formData);
 }
 
@@ -71,6 +71,7 @@ function loadAddStudentForm() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
             let result = JSON.parse(this.responseText);
             if (result.success) {
                 console.log("Success: student added.");
@@ -79,6 +80,28 @@ function loadAddStudentForm() {
             }
         }
     };
-    xhttp.open("POST", "../php/add_student.php", true);
+    xhttp.open("POST", "php/add_student.php", true);
     xhttp.send(formData);
 }
+
+function loadAddTopicForm() {
+    var formData = new FormData();
+    formData.append("name", document.getElementById('name').value);
+    formData.append("description", document.getElementById('description').value);
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            let result = JSON.parse(this.responseText);
+            if (result.success) {
+                console.log("Success: topic added.");
+            } else {
+                console.log(result.err);
+            }
+        }
+    };
+    xhttp.open("POST", "php/add_topic.php", true);
+    xhttp.send(formData);
+}
+console.log("file loaded");

@@ -39,6 +39,7 @@ if (mysqli_connect_errno($conn))
   if ($stmt->execute() === TRUE) {
     echo '{"success": true, "err": "none"}';
   } else {
+    //echo var_dump($_POST);
     echo '{"success": false, "err": ' .   $dob_er . $first_name_er . $last_name_er . $parent_uname_er .'}';
   }
 

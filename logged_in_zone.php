@@ -100,7 +100,7 @@ if(!array_key_exists('username', $_SESSION)){
             }
 
         </script>
-        <script type="text/javascript" src="js/navbarauth.js"></script>
         <script type="text/javascript" src="js/loadDoc.js"></script>
+        <script type="text/javascript" src="js/navbarauth.js"></script>
     </body>
 </html>
