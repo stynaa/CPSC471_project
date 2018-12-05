@@ -26,7 +26,7 @@ function loadAddReview() {
             document.getElementById("form").innerHTML = this.responseText;
         }
     };
-    xhttp.open("GET", "add_review_form.html", true);
+    xhttp.open("GET", "add_review_form.php", true);
     xhttp.send();
 }
 function loadAddSession() {
