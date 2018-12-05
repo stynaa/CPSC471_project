@@ -7,6 +7,7 @@ if(!array_key_exists('username', $_SESSION)){
     die();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
@@ -15,16 +16,12 @@ if(!array_key_exists('username', $_SESSION)){
         <title></title>
     </head>
     <body>
-        <button onclick="loadAddClass()">Add Class</button>
-        <button onclick="loadAddLocation()">Add Location</button>
-        <button onclick="loadAddReview()">Add Review</button>
-        <button onclick="loadAddSession()">Add Session</button>
-        <button onclick="loadAddStudent()">Add Student</button>
-        <button onclick="loadAddTopic()">Add Topic</button>
-        <button onclick="loadAddTopicKnow()">Add Topic Knowledge</button>
-        <form id="form">
+        <div id="btns">
 
+        </div>
+        <form id="form">
         </form>
+
         <script>
             function loadAddClass() {
                 var xhttp = new XMLHttpRequest();
@@ -98,6 +95,48 @@ if(!array_key_exists('username', $_SESSION)){
                 xhttp.open("GET", "php/add_topicknow_form.php", true);
                 xhttp.send();
             }
+
+            function showTutorButtons() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        let x = JSON.parse(this.responseText);
+                        if(x.istutor) {
+                            document.getElementById("btns").innerHTML =
+                                '<button onclick="loadAddClass()">Add Class</button> \
+                                <button onclick="loadAddLocation()">Add Location</button> \
+                                <button onclick="loadAddSession()">Add Session</button> \
+                                <button onclick="loadAddTopic()">Add Topic</button> \
+                                <button onclick="loadAddTopicKnow()">Add Topic Knowledge</button>'
+                                + document.getElementById("btns").innerHTML;
+                        }
+                    }
+                };
+                xhttp.open("GET", "php/auth/checktutor.php", true);
+                xhttp.send();
+            }
+
+            function showParentButtons() {
+
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        let x = JSON.parse(this.responseText);
+
+                        if(x.isparent) {
+                            document.getElementById("btns").innerHTML =
+                                '<button onclick="loadAddStudent()">Add Student</button> \
+                                <button onclick="loadAddReview()">Add Review</button>'
+                                + document.getElementById("btns").innerHTML;
+                        }
+                    }
+                };
+                xhttp.open("GET", "php/auth/checkparent.php", true);
+                xhttp.send();
+            }
+
+            showParentButtons();
+            showTutorButtons();
 
         </script>
         <script type="text/javascript" src="js/navbarauth.js"></script>
