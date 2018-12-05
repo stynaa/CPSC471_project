@@ -177,4 +177,32 @@ function loadAddSessionForm() {
     xhttp.open("POST", "php/add_session.php", true);
     xhttp.send(formData);
 }
+
+function loadEditSessionForm() {
+    var formData = new FormData();
+    formData.append("class_id", document.getElementById('class_id').value);
+    formData.append("session_num", document.getElementById('session_num').value);
+    formData.append("summary", document.getElementById('summary').value);
+    formData.append("location_id", document.getElementById('location_id').value);
+    formData.append("start_time", document.getElementById('start_time').value);
+    formData.append("end_time", document.getElementById('end_time').value);
+    formData.append("avail_flag", document.getElementById('avail_flag').value);
+    //formData.append("sessitem_flag", document.getElementById('sessitem_flag').value);
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            let result = JSON.parse(this.responseText);
+            if (result.success) {
+                console.log("Success: topic added.");
+            } else {
+                console.log(result.err);
+            }
+        }
+    };
+    xhttp.open("POST", "php/edit_session.php", true);
+    xhttp.send(formData);
+}
+
 console.log("file loaded");
