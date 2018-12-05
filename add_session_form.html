@@ -19,12 +19,12 @@ Location:<br><input id="location" type="text" name="location" value="" ><br><br>
 
 Session summary:<br><textarea id="summary" name="summary" rows="10" cols="30">We will be reviewing exponents in this session.
     </textarea><br><br>
-Open Enrollment:
+Open Availability:
 <label>
-    <input type="radio" name="enroll_open" value=1 />Yes</label>
+    <input type="radio" name="avail_flag" value=1 />Yes</label>
 <label>
-    <input type="radio" name="enroll_open" value=0 />No</label>
-<br><br><button type="button" onclick="loadDoc()">Submit</button>
+    <input type="radio" name="avail_flag" value=0 />No</label>
+<br><br><button type="button" onclick="loadAddSessionForm()">Submit</button>
 
 <!-- Need to link: class_id, incrementing session number, location_id, sched_item_id, tutor_id -->
 <!-- Also this includes data for SCHEDULE_ITEM: date, start_time, end_time -->
