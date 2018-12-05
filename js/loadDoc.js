@@ -61,7 +61,7 @@ function loadEditClassForm() {
             }
         }
     };
-    xhttp.open("POST", "php/add_class.php", true);
+    xhttp.open("POST", "php/edit_class.php", true);
     xhttp.send(formData);
 }
 
