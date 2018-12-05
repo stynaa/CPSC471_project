@@ -18,19 +18,19 @@ if(!array_key_exists('username', $_SESSION)){
     <body>
 
         <div id="parentbtns" style="display:none;">
-            <button onclick="loadAddStudent()">Add Student</button>
-            <button onclick="loadEditStudent()">Edit Student Information</button>
-            <button onclick="loadAddReview()">Add Review</button>
-            <button onclick="viewStudents()">View students</button>
+            <button class="navb" onclick="loadAddStudent()">Add Student</button>
+            <button class="navb" onclick="loadEditStudent()">Edit Student Information</button>
+            <button class="navb" onclick="loadAddReview()">Add Review</button>
+            <button class="navb" onclick="viewStudents()">View students</button>
         </div>
         <div id="tutorbtns" style="display:none;">
-            <button onclick="loadAddClass()">Add Class</button>
-            <button onclick="loadEditClass()">Edit Class</button>
-            <button onclick="loadAddLocation()">Add Location</button>
-            <button onclick="loadAddSession()">Add Session</button>
-            <button onclick="loadEditSession()">Edit Session</button>
-            <button onclick="loadAddTopic()">Add Topic</button>
-            <button onclick="loadAddTopicKnow()">Add Topic Knowledge</button>
+            <button class="navb" onclick="loadAddClass()">Add Class</button>
+            <button class="navb" onclick="loadEditClass()">Edit Class</button>
+            <button class="navb" onclick="loadAddLocation()">Add Location</button>
+            <button class="navb" onclick="loadAddSession()">Add Session</button>
+            <button class="navb" onclick="loadEditSession()">Edit Session</button>
+            <button class="navb" onclick="loadAddTopic()">Add Topic</button>
+            <button class="navb" onclick="loadAddTopicKnow()">Add Topic Knowledge</button>
         </div>
 
         <form id="form">
