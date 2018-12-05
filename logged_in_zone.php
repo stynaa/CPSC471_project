@@ -1,3 +1,12 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+if(!array_key_exists('username', $_SESSION)){
+    header('Location: welcome.php');
+    die();
+}
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
