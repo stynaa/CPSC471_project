@@ -1,4 +1,4 @@
-<h3> Edit Student Information: </h3>
+<h3 class="title"> Edit Student Information: </h3>
 
 Select Student:<br><select id="student_id" name="student_id">
 <?php 

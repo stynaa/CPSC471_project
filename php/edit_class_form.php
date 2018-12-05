@@ -1,10 +1,13 @@
-<h3> Edit a Class</h3>
-
-Current Class Name:<br><br><select id="class_id" name="class_id">
 <?php 
 require "./conndb.php";
 require "./testdata.php";
+?>
 
+<h3 class="title"> Edit a Class</h3>
+
+Current Class Name:<br><br><select id="class_id" name="class_id">
+
+<?php
 // Check connection
 if (mysqli_connect_errno($conn))
   {
