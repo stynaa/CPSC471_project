@@ -1,0 +1,31 @@
+Select Class:&nbsp;<input id="class_id" type="text" name="class_id" value=""> &nbsp;&nbsp; Session number:&nbsp;<select id="session_num" name="session_num">
+        <option value=1>1 </option>
+        <option value=2>2 </option>
+        <option value=3>3 </option>
+        <option value=4>4 </option>
+        <option value=5>5 </option>
+        <option value=6>6 </option>
+        <option value=7>7 </option>
+        <option value=8>8 </option>
+        <option value=9>9 </option>
+        <option value=10>10 </option>
+    </select><br><br>
+
+Date:&nbsp;<input id="date" type="date" name="date">&nbsp;&nbsp;
+Start Time:&nbsp;<input id="start_time" type="time" name="start_time">&nbsp;&nbsp; 
+End Time:&nbsp;<input id="end_time" type="time" name="end_time"><br><br>
+
+Location:<br><input id="location" type="text" name="location" value="" ><br><br>
+
+Session summary:<br><textarea id="summary" name="summary" rows="10" cols="30">We will be reviewing exponents in this session.
+    </textarea><br><br>
+Open Enrollment:
+<label>
+    <input type="radio" name="enroll_open" value=1 />Yes</label>
+<label>
+    <input type="radio" name="enroll_open" value=0 />No</label>
+<br><br><button type="button" onclick="loadDoc()">Submit</button>
+
+<!-- Need to link: class_id, incrementing session number, location_id, sched_item_id, tutor_id -->
+<!-- Also this includes data for SCHEDULE_ITEM: date, start_time, end_time -->
+<!-- Also don't know if open enrollment should be here or only in the add class form -->
