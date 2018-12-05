@@ -1,8 +1,11 @@
-<h3>Set Knowledge Level:</h3>
-Topic:&nbsp;<select id="topic_id" name="topic_id">
 <?php 
 require "./conndb.php";
 require "./testdata.php";
+?>
+
+<h3 class="title">Set Knowledge Level:</h3>
+Topic:&nbsp;<select id="topic_id" name="topic_id">
+<?php
 
 // Check connection
 if (mysqli_connect_errno($conn))

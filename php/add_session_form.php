@@ -2,7 +2,7 @@
 require "./conndb.php";
 require "./testdata.php";
 ?>
-<h3>Add Class Session: </h3>
+<h3 class="title">Add Class Session: </h3>
 Select Class:&nbsp;<select id="class_id" name="class_id">
 
 <?php
