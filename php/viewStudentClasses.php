@@ -24,7 +24,7 @@ if($username != -1) {
         while($x = $result->fetch_assoc()) {
             echo '<tr>' . '<td>'.$x["name"].'</td><td>'.$x["tutor_uname"].'</td>'.
                 '<td>'.$x["description"].'</td><td>'.$x["enroll_open"].
-                '</td><td><button onclick="dropCourse('.$student_id, $x["class_id"].')">Drop Course</button></td>'.
+                '</td><td><button onclick="dropCourse('.$student_id .','. $x["class_id"].')">Drop Course</button></td>'.
                 '</tr>';
         }
         echo "</table>";
