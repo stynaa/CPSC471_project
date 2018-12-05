@@ -22,7 +22,7 @@ if(!array_key_exists('username', $_SESSION)){
             <button class="navb" onclick="loadEditStudent()">Edit Student Information</button>
             <button class="navb" onclick="loadAddReview()">Add Review</button>
             <button class="navb" onclick="viewStudents()">View Students</button>
-            <button class="navb" onclick="enrollStudent()">Enroll Student</button>
+            <button class="navb" onclick="loadEnrollStudent()">Enroll Student</button>
         </div>
         <div id="tutorbtns" style="display:none;">
             <button class="navb" onclick="loadAddClass()">Add Class</button>
