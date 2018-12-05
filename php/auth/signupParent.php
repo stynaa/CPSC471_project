@@ -47,6 +47,7 @@ if($insertUser) {
 if ($insertUser->execute() === TRUE) {
     $insertUser->close();
 
+    $t1 = $t2 = FALSE;
     $insertpw = $conn->prepare("INSERT INTO Login_data (username, password_sha, last_login) VALUES (?, ?, CURRENT_TIMESTAMP)");
     $insertpw->bind_param("ss", $username, $password);
     if ($insertpw->execute() === TRUE) {

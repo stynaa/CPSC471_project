@@ -7,15 +7,14 @@
     </head>
     <body>
 
-        <h1>Sign up</h1>
-        <input type="button" id="psu" value="Parent" onclick="loadParentSignup()"></input>
-        <input type="button" id="tsu" value="Tutor" onclick="loadTutorSignup()"></input>
+        <div id="content">
+            <h1>Sign up</h1>
+            <input type="button" id="psu" value="Parent" onclick="loadParentSignup()"></input>
+            <input type="button" id="tsu" value="Tutor" onclick="loadTutorSignup()"></input>
 
-        <form id="signupform">
-
-
-        </form>
-
+            <form id="signupform">
+            </form>
+        </div>
 
         <script type="text/javascript">
             function loadUserSignup() {
@@ -63,9 +62,13 @@
                 let xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
-                        console.log(this.responseText);
                         let x = JSON.parse(this.responseText);
                         console.log(x);
+                        if (x.parentCreated) {
+                            document.getElementById("content").innerHTML = "<p>Congrats! You're signed up. Log in above.</p>";
+                        } else {
+                            //figure out error..
+                        }
                     }
                 };
                 xhttp.open("POST", "php/auth/signupParent.php", true);
@@ -73,15 +76,36 @@
             }
 
             function signupTutor() {
+                var formData = new FormData();
+                formData.append("username", document.getElementById('uname').value);
+                formData.append("pw", document.getElementById('pwsignup').value);
+                formData.append("pwcheck", document.getElementById('pwcheck').value);
+                formData.append("email", document.getElementById('email').value);
+                formData.append("phone", document.getElementById('phone').value);
+                formData.append("first_name", document.getElementById('fname').value);
+                formData.append("last_name", document.getElementById('lname').value);
+                formData.append("bio", document.getElementById('bio').value);
+                formData.append("education", document.getElementById('education').value);
+                formData.append("housenum", document.getElementById('housenum').value);
+                formData.append("city", document.getElementById('city').value);
+                formData.append("street", document.getElementById('street').value);
+                formData.append("pcode", document.getElementById('pcode').value);
+
                 let xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
+                        console.log(this.responseText);
                         let x = JSON.parse(this.responseText);
-
+                        console.log(x);
+                        if (x.tutorCreated) {
+                            document.getElementById("content").innerHTML = "<p>Congrats! You're signed up. Log in above.</p>";
+                        } else {
+                            //figure out error msgs
+                        }
                     }
                 };
                 xhttp.open("POST", "php/auth/signupTutor.php", true);
-                xhttp.send();
+                xhttp.send(formData);
             }
 
         </script>
