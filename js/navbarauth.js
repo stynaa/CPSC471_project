@@ -36,6 +36,7 @@ function login() {
             let x = JSON.parse(this.responseText);
             if(x.status === "Success") {
                 showLoggedIn(x.username);
+                document.location.assign("logged_in_zone.php");
             } else {
                 //todo: don't be annoying..
                 alert("Login failed.");
@@ -60,6 +61,7 @@ function logout() {
             if(x.status === "done") {
                 document.getElementById("login").innerHTML = 'Logged out. Good-bye. \
                     <button type="button" onclick="showlogin()">Log in</button>';
+                signup();
             }
         }
     };
