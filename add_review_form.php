@@ -38,6 +38,6 @@ Rating:<br><select id="rating" name="rating">
     <option value=9>9 </option>
     <option value=10>10 - excellent </option>
 </select> <br>
-<br><button type="button" onclick="loadDoc()">Submit</button>
+<br><button type="button" onclick="loadAddReviewForm()">Submit</button>
 
 <!-- Need to Link: parent_uname, tutor_uname -->

@@ -226,4 +226,26 @@ function loadEnrollStudentForm() {
     xhttp.send(formData);
 }
 
+function loadAddReviewForm() {
+    var formData = new FormData();
+    formData.append("tutor_uname", document.getElementById('tutor_uname').value);
+    formData.append("comment", document.getElementById('comment').value);
+    formData.append("rating", document.getElementById('rating').value);
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            let result = JSON.parse(this.responseText);
+            if (result.success) {
+                console.log("Success: review saved.");
+            } else {
+                console.log(result.err);
+            }
+        }
+    };
+    xhttp.open("POST", "php/add_review.php", true);
+    xhttp.send(formData);
+}
+
 console.log("file loaded");
