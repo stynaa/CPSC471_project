@@ -88,3 +88,40 @@ nav > #login {
 * {
     font-family: Arial, Helvetica, sans-serif;
 }
+
+button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+}
+
+button:hover {
+    background-color: #FFFFFF;
+    color: #4CAF50;
+}
+
+input[type="button"] {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+input[type="button"]:hover {
+    background-color: #FFFFFF;
+    border: 2px solid gray;
+    color: #4CAF50;
+}
+
+#query-results {
+    background-color: lightgray;
+    padding: 15px 15px;
+}
+
+#vs:focus {
+    outline: 0;
+}
