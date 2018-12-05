@@ -205,4 +205,25 @@ function loadEditSessionForm() {
     xhttp.send(formData);
 }
 
+function loadEnrollStudentForm() {
+    var formData = new FormData();
+    formData.append("class_id", document.getElementById('class_id').value);
+    formData.append("student_id", document.getElementById('student_id').value);
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            let result = JSON.parse(this.responseText);
+            if (result.success) {
+                console.log("Success: student enrolled.");
+            } else {
+                console.log(result.err);
+            }
+        }
+    };
+    xhttp.open("POST", "php/enroll_student.php", true);
+    xhttp.send(formData);
+}
+
 console.log("file loaded");
