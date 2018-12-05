@@ -48,6 +48,34 @@ nav > #login {
 
 #login > button {
     float: left;
-    margin-top: 20px;
+    margin-top: 10px;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 1px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 /*end nav bar*/
+#login > button:hover {
+    background-color: #FFFFFF;
+    color: #4CAF50;
+}
+
+.navb {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+.navb:hover {
+    background-color: #FFFFFF;
+    color: #4CAF50;
+}
