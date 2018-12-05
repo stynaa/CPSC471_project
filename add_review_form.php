@@ -2,7 +2,7 @@
 require "php/conndb.php";
 require "php/testdata.php";
 ?>
-<h2>Write Review:</h2>
+<h2 class="title">Write Review:</h2>
 Select Tutor:<br><select id="tutor_uname">
 <?php
     $stmt = $conn->prepare("SELECT DISTINCT c.tutor_uname FROM Class AS c WHERE c.class_id IN (SELECT e.class_id FROM Enrolled AS e WHERE e.student_id IN (SELECT s.student_id FROM Student AS s WHERE s.parent_uname = ?))");

@@ -1,9 +1,13 @@
-Class Name:<br><input id="name" type="text" name="name" value="" ><br><br>
-Topic:<br><select id="topic" name="topic">
 <?php 
 require "./conndb.php";
 require "./testdata.php";
+?>
 
+<h3 class="title">Add a new class: </h3>
+Class Name:<br><input id="name" type="text" name="name" value="" ><br><br>
+Topic:<br><select id="topic" name="topic">
+
+<?php
 // Check connection
 if (mysqli_connect_errno($conn))
   {
