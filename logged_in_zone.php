@@ -21,6 +21,7 @@ if(!array_key_exists('username', $_SESSION)){
             <button onclick="loadAddStudent()">Add Student</button>
             <button onclick="loadEditStudent()">Edit Student Information</button>
             <button onclick="loadAddReview()">Add Review</button>
+            <button onclick="viewStudents()">View students</button>
         </div>
         <div id="tutorbtns" style="display:none;">
             <button onclick="loadAddClass()">Add Class</button>
@@ -39,6 +40,33 @@ if(!array_key_exists('username', $_SESSION)){
 
         </div>
 
+        <script type="text/javascript">
+            function viewStudents(){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("query-results").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "php/viewStudents.php", true);
+                xhttp.send();
+            }
+
+            //Note: This is very not secure..
+            function viewClasses(studentid) {
+                var formData = new FormData();
+                formData.append("student_id", studentid);
+
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("query-results").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("POST", "php/viewStudentClasses.php", true);
+                xhttp.send(formData);
+            }
+        </script>
         <script type="text/javascript" src="js/buttonLoaders.js"></script>
         <script type="text/javascript" src="js/formLoaders.js"></script>
         <script type="text/javascript" src="js/loadDoc.js"></script>
