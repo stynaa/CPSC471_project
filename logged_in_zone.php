@@ -3,7 +3,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 if(!array_key_exists('username', $_SESSION)){
-    header('Location: welcome.php');
+    header('Location: signup.html');
     die();
 }
 ?>
