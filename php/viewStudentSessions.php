@@ -9,7 +9,7 @@ require "./testdata.php";
 
 //validate & verify & cleanse input data (if any)
 
-$student_id = $_POST["student_id"];
+$student_id = test_input($_POST["student_id"]);
 
 $stmt = $conn->prepare("SELECT e.class_id, e.enrollment_date, s.session_num, s.summary, l.bld_number, l.street, l.city, l.postal_code, l.building_name FROM (Enrolled AS e LEFT OUTER JOIN Session AS s ON s.class_id = e.class_id) LEFT OUTER JOIN Location AS l ON s.location_id = l.location_id WHERE e.student_id=?");
 $stmt->bind_param("s", $student_id);
@@ -21,7 +21,7 @@ if($username != -1) {
         $result = $stmt->get_result();
 
         echo "<table>";
-        echo '<th>Class id</th><th>Enrollment Date</th><th>Session Number</th><th>Summary</th><th>Adress</th><th>building_name</th>';
+        echo '<th>Class id</th><th>Enrollment Date</th><th>Session Number</th><th>Summary</th><th>Address</th><th>Location</th>';
         while($x = $result->fetch_assoc()) {
             echo '<tr>' . '<td>'.$x["class_id"].'</td><td>'.$x["enrollment_date"].'</td>'.
                 '<td>'.$x["session_num"].'</td><td>'.$x["summary"].'</td>'.

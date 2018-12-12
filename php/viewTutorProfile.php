@@ -8,21 +8,44 @@ require "./testdata.php";
 */
 
 //validate & verify & cleanse input data (if any)
-$username = $_POST["username"];
+$username = test_input($_POST["username"]);
 
 $stmt = $conn->prepare("SELECT * FROM Tutor AS t LEFT JOIN User AS u ON t.username = u.username WHERE u.username=?");
 $stmt->bind_param("s", $username);
 
 if ($stmt->execute()) {
     $result = $stmt->get_result();
-    echo "<table>";
-    echo '<th>Username</th><th>First Name</th><th>Last Name</th><th>Education</th><th>Bio</th><th>City</th><th>Phone</th><th>Email</th><th>Select</th>';
     while($x = $result->fetch_assoc()) {
-        echo '<tr>' . '<td>'.$x["username"].'</td><td>'.$x["first_name"].
-            '</td><td>'.$x["last_name"].'</td><td>'.$x["education"].'</td><td>'.
-            '</td><td>'.$x["bio"].'</td><td>'.$x["city"].'</td><td>'.
-            '</td><td><a href="tel:'.$x["phone"].'">'.$x["phone"].'</a></td><td><a href="mailto:'.$x["email"].'">'.$x["email"].'</td><td>'.
-            '</tr>';
+        echo "<h3>" . $x["first_name"] . " " . $x["last_name"] . "'s Profile</h3>";
+        echo "<table>";
+        echo '<th>Username:</th><td>' . $x["username"] .'</td>';
+        echo '<tr><th>First Name:</th><td>'. $x["first_name"] . '</td></tr>' .
+            '<tr><th>Last Name:</th><td>'. $x["last_name"] . '</td></tr>' .
+            '<tr><th>Education:</th><td>'. $x["education"] . '</td></tr>' .
+            '<tr><th>Bio:</th><td>'. $x["bio"] . '</td></tr>' .
+            '<tr><th>City:</th><td>'. $x["city"] . '</td></tr>' .
+            '<tr><th>Phone Number: </th><td><a href="tel:'.$x["phone"].'">'.$x["phone"].'</a></td></tr>' .
+            '<tr><th>Email:</th><td><a href="mailto:'.$x["email"].'">'.$x["email"].'</a></td></tr>' ;
+    }
+    echo "</table>";
+} else {
+    echo "e";
+}
+
+echo "<br><br><h3>Topic Knowledge: </h3>";
+$stmt = $conn->prepare("SELECT t.name, k.knowledge_level FROM Topic AS t, Tutor_topic_knowledge AS k WHERE t.topic_id=k.topic_id AND k.username=(?);");
+$stmt->bind_param("s", $username);
+
+if ($stmt->execute())
+{
+    $result = $stmt->get_result();
+    echo "<table>";
+    echo '<th>Topic</th><th>Knowledge Level</th>';
+    while($x = $result->fetch_assoc())
+    {
+        echo '<tr><td>' . $x["name"] .
+         '</td><td>' . $x["knowledge_level"] .
+         '</td></tr>';
     }
     echo "</table>";
 } else {
@@ -47,7 +70,7 @@ if ($stmt->execute())
             '</td><td>' . $x["rating"] .
             '</td></tr>';
     }
-    echo "</table>";
+    echo "</table><br><br><br>";
 } else {
     echo "e";
 }

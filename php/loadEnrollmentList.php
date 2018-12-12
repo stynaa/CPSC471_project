@@ -9,7 +9,7 @@ require "testdata.php";
 
 //validate & verify & cleanse input data (if any)
 
-$class_id = $_GET["class_id"];
+$class_id = test_input($_GET["class_id"]);
 
 $stmt = $conn->prepare("SELECT s.student_id, s.dob, s.first_name, s.last_name, s.parent_uname, e.enrollment_date FROM Student AS s INNER JOIN Enrolled AS e ON s.student_id = e.student_id WHERE e.class_id = ?");
 $stmt->bind_param("i", $class_id);
