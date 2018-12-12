@@ -23,7 +23,7 @@ if (mysqli_connect_errno($conn))
     if ($stmt->execute() === TRUE) {
         $result = $stmt->get_result();
       } else {
-        echo '{"success": false, "err": "Could not get tutor username." }';
+        echo '{"success": false, "err": "Could not get tutor username. " }';
       }
 
     while ($row = $result->fetch_assoc()) {
