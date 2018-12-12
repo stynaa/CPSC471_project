@@ -29,6 +29,30 @@ if ($stmt->execute()) {
     echo "e";
 }
 
+echo "<br><br><h3>Reviews: </h3>";
+
+$stmt = $conn->prepare("SELECT parent_uname, time_stamp, comment, rating FROM Review WHERE tutor_uname=(?)");
+$stmt->bind_param("s", $username);
+
+if ($stmt->execute()) 
+{
+    $result = $stmt->get_result();
+    echo "<table>";
+    echo '<th>Parent Username</th><th>Time Stamp</th><th>Comment</th><th>Rating</th><th>';
+    while($x = $result->fetch_assoc())
+    {
+        echo '<tr><td>' . $x["parent_uname"] .
+            '</td><td>' . $x["time_stamp"] .
+            '</td><td>' . $x["comment"] .
+            '</td><td>' . $x["rating"] .
+            '</td></tr>';
+    }
+    echo "</table>";
+} else {
+    echo "e";
+}
+
+
 /* end of your php code */
 include "disconndb.php";
 ?>
