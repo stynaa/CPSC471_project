@@ -9,10 +9,10 @@ require "./testdata.php";
 
 //validate & verify & cleanse input data (if any)
 
-$fname = $_POST["first_name"];
-$lname = $_POST["last_name"];
-$uname = $_POST["username"];
-$city = $_POST["city"];
+$fname = test_input($_POST["first_name"]);
+$lname = test_input($_POST["last_name"]);
+$uname = test_input($_POST["username"]);
+$city = test_input($_POST["city"]);
 
 
 $stmt = $conn->prepare("SELECT * FROM Tutor AS t LEFT JOIN User AS u ON t.username = u.username WHERE u.first_name LIKE ? AND u.last_name LIKE ? AND u.username LIKE ? AND t.city LIKE ?");

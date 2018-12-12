@@ -73,16 +73,16 @@ INSERT INTO Tutor_topic_knowledge VALUES ("jane1",5,6);
 # REVIEWS(parent_uname, tutor_uname, timestamp, comment, rating) **Assuming timestamp self populates
 INSERT INTO Review(parent_uname, tutor_uname, comment, rating) VALUES ("catsrcool", "john1",
     "Very knowledgable about mathematics. My son liked him a lot and always enjoyed his sessions. Grades are improving.",
-    5);
+    10);
 INSERT INTO Review(parent_uname, tutor_uname, comment, rating) VALUES ("catsrcool", "jane1",
     "Very nice person, but her knowledge in English is quite limited... Basically paying her to teach at my own level.",
-    2);
+    4);
 INSERT INTO Review(parent_uname, tutor_uname, comment, rating) VALUES ("immaparent", "john1",
     "This guy is not a physics major, but still has a very good understanding of it. Good at teaching high school level.",
-    4);
+    8);
 INSERT INTO Review(parent_uname, tutor_uname, comment, rating) VALUES ("immaparent", "jane1",
     "She kept my kid engaged with her insane collection of cool animal facts! My kid now wants to go into biology like her.",
-    5);
+    10);
 
 # STUDENT(student_id, dob, first_name, last_name, parent_uname) **Assuming student_id self populates
 INSERT INTO Student(dob, first_name, last_name, parent_uname) VALUES ('2005-01-05', "Luke", "Galaxy", "catsrcool");
@@ -118,43 +118,43 @@ INSERT INTO Schedule_item(start_time, end_time, tutor_uname, avail_flag, session
 
 ## Johns open physics class - 4 sessions on wednesdays in January 2019
 INSERT INTO Schedule_item(start_time, end_time, tutor_uname, avail_flag, sessionitem_flag)
-    VALUES ('2019-01-09 18:30:00', '19:30:00', "john1", TRUE, TRUE);
+    VALUES ('2019-01-09 18:30:00', '19:30:00', "john1", FALSE, TRUE);
 INSERT INTO Schedule_item(start_time, end_time, tutor_uname, avail_flag, sessionitem_flag)
-    VALUES ('2019-01-16 18:30:00', '19:30:00', "john1", TRUE, TRUE);
+    VALUES ('2019-01-16 18:30:00', '19:30:00', "john1", FALSE, TRUE);
 INSERT INTO Schedule_item(start_time, end_time, tutor_uname, avail_flag, sessionitem_flag)
-    VALUES ('2019-01-23 18:30:00', '19:30:00', "john1", TRUE, TRUE);
+    VALUES ('2019-01-23 18:30:00', '19:30:00', "john1", FALSE, TRUE);
 INSERT INTO Schedule_item(start_time, end_time, tutor_uname, avail_flag, sessionitem_flag)
-    VALUES ('2019-01-30 18:30:00', '19:30:00', "john1", TRUE, TRUE);
+    VALUES ('2019-01-30 18:30:00', '19:30:00', "john1", FALSE, TRUE);
 
 ## Janes open Biology Class - 4 sessions on fridays in January 2019
 INSERT INTO Schedule_item(start_time, end_time, tutor_uname, avail_flag, sessionitem_flag)
-    VALUES ('2019-01-04 16:00:00', '2019-01-04 17:00:00', "jane1", TRUE, TRUE);
+    VALUES ('2019-01-04 16:00:00', '2019-01-04 17:00:00', "jane1", FALSE, TRUE);
 INSERT INTO Schedule_item(start_time, end_time, tutor_uname, avail_flag, sessionitem_flag)
-    VALUES ('2019-01-11 16:00:00', '2019-01-11 17:00:00', "jane1", TRUE, TRUE);
+    VALUES ('2019-01-11 16:00:00', '2019-01-11 17:00:00', "jane1", FALSE, TRUE);
 INSERT INTO Schedule_item(start_time, end_time, tutor_uname, avail_flag, sessionitem_flag)
-    VALUES ('2019-01-18 16:00:00', '2019-01-18 17:00:00', "jane1", TRUE, TRUE);
+    VALUES ('2019-01-18 16:00:00', '2019-01-18 17:00:00', "jane1", FALSE, TRUE);
 INSERT INTO Schedule_item(start_time, end_time, tutor_uname, avail_flag, sessionitem_flag)
-    VALUES ('2019-01-25 16:00:00', '2019-01-25 17:00:00', "jane1", TRUE, TRUE);
+    VALUES ('2019-01-25 16:00:00', '2019-01-25 17:00:00', "jane1", FALSE, TRUE);
 
-## Janes open Chemestry Class - 4 sessions on saturdays in January 2019
+## Janes open Chemistry Class - 4 sessions on saturdays in January 2019
 INSERT INTO Schedule_item(start_time, end_time, tutor_uname, avail_flag, sessionitem_flag)
-    VALUES ('2019-01-05 13:00:00', '2019-01-05 14:00:00', "jane1", TRUE, TRUE);
+    VALUES ('2019-01-05 13:00:00', '2019-01-05 14:00:00', "jane1", FALSE, TRUE);
 INSERT INTO Schedule_item(start_time, end_time, tutor_uname, avail_flag, sessionitem_flag)
-    VALUES ('2019-01-12 13:00:00', '2019-01-12 14:00:00', "jane1", TRUE, TRUE);
+    VALUES ('2019-01-12 13:00:00', '2019-01-12 14:00:00', "jane1", FALSE, TRUE);
 INSERT INTO Schedule_item(start_time, end_time, tutor_uname, avail_flag, sessionitem_flag)
-    VALUES ('2019-01-19 13:00:00', '2019-01-19 14:00:00', "jane1", TRUE, TRUE);
+    VALUES ('2019-01-19 13:00:00', '2019-01-19 14:00:00', "jane1", FALSE, TRUE);
 INSERT INTO Schedule_item(start_time, end_time, tutor_uname, avail_flag, sessionitem_flag)
-    VALUES ('2019-01-26 13:00:00', '2019-01-26 14:00:00', "jane1", TRUE, TRUE);
+    VALUES ('2019-01-26 13:00:00', '2019-01-26 14:00:00', "jane1", FALSE, TRUE);
 
 ## Janes open English Class - 4 sessions on saturdays in January 2019
 INSERT INTO Schedule_item(start_time, end_time, tutor_uname, avail_flag, sessionitem_flag)
-    VALUES ('2019-01-05 14:30:00', '2019-01-05 15:30:00', "jane1", TRUE, TRUE);
+    VALUES ('2019-01-05 14:30:00', '2019-01-05 15:30:00', "jane1", FALSE, TRUE);
 INSERT INTO Schedule_item(start_time, end_time, tutor_uname, avail_flag, sessionitem_flag)
-    VALUES ('2019-01-12 14:30:00', '2019-01-12 15:30:00', "jane1", TRUE, TRUE);
+    VALUES ('2019-01-12 14:30:00', '2019-01-12 15:30:00', "jane1", FALSE, TRUE);
 INSERT INTO Schedule_item(start_time, end_time, tutor_uname, avail_flag, sessionitem_flag)
-    VALUES ('2019-01-19 14:30:00', '2019-01-19 15:30:00', "jane1", TRUE, TRUE);
+    VALUES ('2019-01-19 14:30:00', '2019-01-19 15:30:00', "jane1", FALSE, TRUE);
 INSERT INTO Schedule_item(start_time, end_time, tutor_uname, avail_flag, sessionitem_flag)
-    VALUES ('2019-01-26 14:30:00', '2019-01-26 15:30:00', "jane1", TRUE, TRUE);
+    VALUES ('2019-01-26 14:30:00', '2019-01-26 15:30:00', "jane1", FALSE, TRUE);
 
 # may have to redo this one after deciding how student_id and class_id are given
 # ENROLLED(student_id, class_id, enrollment_date) **Assuming enrollment_date self populates
@@ -171,3 +171,27 @@ INSERT INTO Enrolled (student_id, class_id) VALUES (3, 1);
 
 # may have to redo this one after deciding how location_id, sched_item_id and class_id are given
 # SESSION(class_id, session_num, summary, location_id, sched_item_id)
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (1,1, 'Exponents will be discussed.',1,1);
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (1,2, 'Logarithms! Everything about them.',1,2);
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (1,3, 'We will cover an intro to conics and geometric shapes.',1,3);
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (1,4, 'Hyperbolas and ellipsoids!',1,4);
+
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (2,1, 'Covering kinematics.',1,5);
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (2,2, 'Topics in dynamics.',1,6);
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (2,3, 'Electricity and Magnetism',1,7);
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (2,4, 'Modern physics - what is light?',1,8);
+
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (3,1, 'Cellular respiration.',2,9);
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (3,2, 'ATP.',2,10);
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (3,3, 'Photosynthesis',2,11);
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (3,4, 'Microbiology review.',2,12);
+
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (4,1, 'Heat transfer',2,13);
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (4,2, 'Calorimetry and its applications',2,14);
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (4,3, 'Intro to electro-chemistry',2,15);
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (4,4, 'Electrolysis and electroplating.',2,16);
+
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (5,1, 'Romeo and Juliet I',1,17);
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (5,2, 'Romeo and Juliet II',1,18);
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (5,3, 'Gone with the wind',1,19);
+INSERT INTO Session (class_id, session_num, summary, location_id, sched_item_id) VALUES (5,4, 'Essay writing for diplomas',1,20);

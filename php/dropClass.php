@@ -9,8 +9,8 @@ require "./testdata.php";
 
 //validate & verify & cleanse input data (if any)
 
-$student_id = $_POST["student_id"];
-$class_id = $_POST["class_id"];
+$student_id = test_input($_POST["student_id"]);
+$class_id = test_input($_POST["class_id"]);
 
 $stmt = $conn->prepare("DELETE FROM Enrolled WHERE class_id=? AND student_id=?");
 $stmt->bind_param("ss", $class_id, $student_id);
