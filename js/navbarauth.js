@@ -29,7 +29,6 @@ function login() {
     var formData = new FormData();
     formData.append("username", document.getElementById('username').value);
     formData.append("pw", document.getElementById('pw').value);
-
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -39,7 +38,7 @@ function login() {
                 document.location.assign("logged_in_zone.php");
             } else {
                 //todo: don't be annoying..
-                alert("Login failed.");
+                alert("Login failed: " + x.err);
             }
         }
     };

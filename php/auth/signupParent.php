@@ -1,18 +1,24 @@
 <?php
 require "../conndb.php";
+require "../testdata.php";
 /* your php code below
 * $conn is database connection
 * $_SESSION["username"] is username of logged in user
 */
 
 //validate & verify & cleanse input data (if any)
-$username = $_POST["username"];
-$pw1 = $_POST["pw"];
-$pw2 = $_POST["pwcheck"];
-$email = $_POST["email"];
-$phone = $_POST["phone"];
-$first_name = $_POST["first_name"];
-$last_name = $_POST["last_name"];
+$username = test_input($_POST["username"]);
+$pw1 = test_input($_POST["pw"]);
+$pw2 = test_input($_POST["pwcheck"]);
+$email = test_input($_POST["email"]);
+$phone = test_input($_POST["phone"]);
+$first_name = test_input($_POST["first_name"]);
+$last_name = test_input($_POST["last_name"]);
+
+
+
+
+
 
 $password = $pw1;
 
