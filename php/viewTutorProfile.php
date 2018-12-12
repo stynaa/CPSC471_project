@@ -8,7 +8,7 @@ require "./testdata.php";
 */
 
 //validate & verify & cleanse input data (if any)
-$username = $_POST["username"];
+$username = testdata($_POST["username"]);
 
 $stmt = $conn->prepare("SELECT * FROM Tutor AS t LEFT JOIN User AS u ON t.username = u.username WHERE u.username=?");
 $stmt->bind_param("s", $username);
