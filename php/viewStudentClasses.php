@@ -1,5 +1,6 @@
 <?php
 require "conndb.php";
+require "./testdata.php";
 
 /* your php code below
 * $conn is database connection

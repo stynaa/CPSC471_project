@@ -101,37 +101,5 @@ if (mysqli_connect_errno($con))
     echo "Error: " . $result . "<br>" . $con->error;
 }
 
-/*
-  $result = mysqli_query($con,"SELECT * FROM Tutor");
-
-echo "<table border='1'>
-<tr>
-<th>username</th>
-<th>bio</th>
-<th>education</th>
-<th>house_num</th>
-<th>street</th>
-<th>city</th>
-<th>postal_code</th>
-</tr>";
-
-while($row = mysqli_fetch_array($result))
-  {
-  echo "<tr>";
-  echo "<td>" . $row['username'] . "</td>";
-  echo "<td>" . $row['bio'] . "</td>";
-  echo "<td>" . $row['education'] . "</td>";
-  echo "<td>" . $row['house_num'] . "</td>";
-  echo "<td>" . $row['street'] . "</td>";
-  echo "<td>" . $row['city'] . "</td>";
-  echo "<td>" . $row['postal_code'] . "</td>";
-  echo "<td><a href='update.php?ID= " . $row['ID'] . "'>Update</a></td>";
-  echo "<td><a onClick= \"return confirm('Do you want to delete this user?')\" href='view.php?job=delete&amp;ID= " . $row['ID'] . "'>DELETE</a></td>";
-  
-  echo "</tr>";
-  }
-echo "</table>";
-*/
-
-mysqli_close($con);
+include "disconndb.php";
 ?>
