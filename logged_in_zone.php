@@ -33,7 +33,8 @@ if(!array_key_exists('username', $_SESSION)){
             <button class="navb" onclick="loadEditSession()">Edit Session</button>
             <button class="navb" onclick="loadAddTopic()">Add Topic</button>
             <button class="navb" onclick="loadAddTopicKnow()">Add Topic Knowledge</button>
-            <button class="navb" onclick="tutorCheckSchedule()">Check Schedule</button>
+            <button class="navb" onclick="loadViewScheduleAsTutor()">View Schedule</button>
+            
         </div>
 
         <form id="form" style="float: left">
