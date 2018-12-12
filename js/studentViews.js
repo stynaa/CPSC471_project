@@ -122,6 +122,17 @@ function parentViewTutorProfile(uname) {
     xhttp.send(formData);
 }
 
+function viewEnrollmentList(class_id) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("form").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "php/loadEnrollmentList.php?class_id=" + class_id, true);
+    xhttp.send();
+}
+
 function viewScheduleAsStudent(student_id) {
     var formData = new FormData();
     formData.append("student_id", student_id);
