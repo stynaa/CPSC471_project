@@ -8,7 +8,6 @@ require "conndb.php";
 
 //validate & verify & cleanse input data (if any)
 
-
 $stmt = $conn->prepare("SELECT * FROM Student WHERE parent_uname=?");
 $stmt->bind_param("s", $username);
 
