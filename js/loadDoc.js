@@ -157,7 +157,7 @@ function loadAddSessionForm() {
     formData.append("session_num", document.getElementById('session_num').value);
     formData.append("summary", document.getElementById('summary').value);
     formData.append("location_id", document.getElementById('location_id').value);
-    formData.append("start_time", document.getElementById('location_id').value);
+    formData.append("start_time", document.getElementById('start_time').value);
     formData.append("end_time", document.getElementById('end_time').value);
     formData.append("avail_flag", document.getElementById('avail_flag').value);
     //formData.append("sessitem_flag", document.getElementById('sessitem_flag').value);
