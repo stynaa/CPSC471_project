@@ -1,3 +1,16 @@
+function showStudentList() {
+    viewStudents();
+    var x = document.getElementById("query-results");
+    var b = document.getElementById("vs");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        b.style.backgroundColor = "lightgrey";
+    } else {
+        x.style.display = "none";
+        b.style.backgroundColor = "#4CAF50";
+    }
+}
+
 function viewStudents(){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
