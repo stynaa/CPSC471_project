@@ -132,3 +132,17 @@ function viewEnrollmentList(class_id) {
     xhttp.open("GET", "php/loadEnrollmentList.php?class_id=" + class_id, true);
     xhttp.send();
 }
+
+function viewScheduleAsStudent(student_id) {
+    var formData = new FormData();
+    formData.append("student_id", student_id);
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("query-results").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("POST", "php/view_schedule_as_student_form.php", true);
+    xhttp.send(formData);
+}
