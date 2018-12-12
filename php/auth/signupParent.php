@@ -15,6 +15,11 @@ $phone = test_input($_POST["phone"]);
 $first_name = test_input($_POST["first_name"]);
 $last_name = test_input($_POST["last_name"]);
 
+
+
+
+
+
 $password = $pw1;
 
 //Check if username exists
