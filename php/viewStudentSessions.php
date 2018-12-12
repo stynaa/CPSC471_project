@@ -21,7 +21,7 @@ if($username != -1) {
         $result = $stmt->get_result();
 
         echo "<table>";
-        echo '<th>Class id</th><th>Enrollment Date</th><th>Session Number</th><th>Summary</th><th>Adress</th><th>building_name</th>';
+        echo '<th>Class id</th><th>Enrollment Date</th><th>Session Number</th><th>Summary</th><th>Address</th><th>Location</th>';
         while($x = $result->fetch_assoc()) {
             echo '<tr>' . '<td>'.$x["class_id"].'</td><td>'.$x["enrollment_date"].'</td>'.
                 '<td>'.$x["session_num"].'</td><td>'.$x["summary"].'</td>'.

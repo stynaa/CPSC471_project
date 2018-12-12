@@ -13,6 +13,7 @@ function loadAddLocationForm() {
                 console.log("new location added.");
             } else {
                 console.log("error: unable to add new location.");
+                alert("Error: " + result.err);
             }
         }
     };
@@ -35,6 +36,7 @@ function loadAddClassForm() {
                 console.log("new class added.");
             } else {
                 console.log(result.err);
+                alert("Error: " + result.err);
             }
         }
     };
@@ -58,6 +60,7 @@ function loadEditClassForm() {
                 console.log("class edited.");
             } else {
                 console.log(result.err);
+                alert("Error: " + result.err);
             }
         }
     };
@@ -78,6 +81,7 @@ function loadAddTopicKnowledgeForm() {
                 console.log("new topic knowledge added.");
             } else {
                 console.log(result.err);
+                alert("Error: " + result.err);
             }
         }
     };
@@ -100,6 +104,7 @@ function loadAddStudentForm() {
                 console.log("Success: student added.");
             } else {
                 console.log(result.err);
+                alert("Error: " + result.err);
             }
         }
     };
@@ -123,6 +128,7 @@ function loadEditStudentForm() {
                 console.log("Success: student edited.");
             } else {
                 console.log(result.err);
+                alert("Error: " + result.err);
             }
         }
     };
@@ -144,6 +150,7 @@ function loadAddTopicForm() {
                 console.log("Success: topic added.");
             } else {
                 console.log(result.err);
+                alert("Error: " + result.err);
             }
         }
     };
@@ -171,6 +178,7 @@ function loadAddSessionForm() {
                 console.log("Success: topic added.");
             } else {
                 console.log(result.err);
+                alert("Error: " + result.err);
             }
         }
     };
@@ -198,6 +206,7 @@ function loadEditSessionForm() {
                 console.log("Success: topic added.");
             } else {
                 console.log(result.err);
+                alert("Error: " + result.err);
             }
         }
     };
@@ -219,6 +228,7 @@ function loadEnrollStudentForm() {
                 console.log("Success: student enrolled.");
             } else {
                 console.log(result.err);
+                alert("Error: " + result.err);
             }
         }
     };
@@ -241,6 +251,7 @@ function loadAddReviewForm() {
                 console.log("Success: review saved.");
             } else {
                 console.log(result.err);
+                alert("Error: " + result.err);
             }
         }
     };
