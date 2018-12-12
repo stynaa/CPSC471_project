@@ -26,7 +26,7 @@
                 WHERE c.class_id=s.class_id AND c.topic_id=t.topic_id AND s.sched_item_id=i.schitem_id AND s.location_id=l.location_id AND c.class_id=e.class_id AND e.student_id=(?);");
     $stmt->bind_param("s", $student_id);
 
-    $student_id = testdata($_POST["student_id"]);
+    $student_id = test_input($_POST["student_id"]);
 
     if ($stmt->execute() === TRUE) {
         $result = $stmt->get_result();

@@ -9,7 +9,7 @@ require "./testdata.php";
 
 //validate & verify & cleanse input data (if any)
 
-$student_id = testdata($_POST["student_id"]);
+$student_id = test_input($_POST["student_id"]);
 
 $stmt = $conn->prepare("SELECT * FROM Class WHERE class_id IN (SELECT class_id FROM Enrolled WHERE student_id=?)");
 $stmt->bind_param("s", $student_id);
