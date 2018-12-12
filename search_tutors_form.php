@@ -5,3 +5,4 @@ Last Name:<br><input id="last_name" type="text" name="last_name" value=""><br>
 Username:<br><input id="username" type="text" name="username" value=""><br>
 City:<br><input id="city" type="text" name="dob" value=""><br>
 <br><button type="button" onclick="getTutorSearchResults()">Submit</button>
+<button type="button" onclick="getTutorAllResults()">Show All Tutors</button>
