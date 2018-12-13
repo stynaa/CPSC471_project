@@ -4,27 +4,32 @@ require "./conndb.php";
 require "./testdata.php";
 
 // Check connection
-if (mysqli_connect_errno($conn))
-  {
-
+if (mysqli_connect_errno($conn)) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
-  $username_err = $topic_id_err = $knowledge_level_err = "";
-
-  $stmt1 = $conn->prepare("SELECT COUNT(username) AS count FROM Tutor_topic_knowledge WHERE username=(?) AND topic_id=(?)");
-  $stmt1->bind_param("si", $username1, $topic_id1);
-
-  $username1 = $_SESSION["username"];
-
-  if (empty($_POST["topic_id"])) {
-    $topic_id_err = "Topic ID is required.";
-  } else {
-    $topic_id1 = test_input($_POST["topic_id"]);
-  }
-
-if ($stmt1->execute() === TRUE) {
-    $result=$stmt1->get_result();
 }
+$username_err = $topic_id_err = $knowledge_level_err = "";
+$error = false;
+
+$stmt = $conn->prepare("SELECT COUNT(username) AS count FROM Tutor_topic_knowledge WHERE username=(?) AND topic_id=(?)");
+$stmt->bind_param("si", $username, $topic_id);
+
+$username = $_SESSION["username"];
+
+if (empty($_POST["topic_id"])) {
+  $error = true;
+  $topic_id_err = "Topic ID is required.";
+} else {
+  $topic_id = test_input($_POST["topic_id"]);
+  if (!isa_number($topic_id)) {
+    $error = true;
+    $topic_id_err = "Topic ID entry is not a number. ";
+  }
+}
+
+  if ($stmt->execute() === TRUE) {
+    $result=$stmt->get_result();
+  }
+
 while($row = $result->fetch_assoc()) {
     if ($row["count"] == 0) {
         // prepare and bind
@@ -36,28 +41,28 @@ while($row = $result->fetch_assoc()) {
   }
 }
 
-
-    $username = $_SESSION["username"];
-
-    if (empty($_POST["topic_id"])) {
-    $topic_id_err = "Topic ID is required.";
-    } else {
-    $topic_id = test_input($_POST["topic_id"]);
-    }
-
-
   if (empty($_POST["knowledge_level"])) {
-    //$knowledge_level_err = "Knowledge level is required.";
-    $knowledge_level_err = test_input($_POST["knowledge_level"]);
+    $knowledge_level_err = "Knowledge level is required.";
+    $error = true;
+    //$knowledge_level_err = test_input($_POST["knowledge_level"]);
   } else {
     $knowledge_level = test_input($_POST["knowledge_level"]);
+    if (!isa_rating($knowledge_level)) {
+      $error = true;
+      $knowledge_level_err = "Knowledge level entry must be a number between 1-10. ";
+    }
   }
 
-  if ($stmt->execute() === TRUE) {
-    echo '{"success": true, "err": "none"}';
+  if (!$error) {
+    if ($stmt->execute() === TRUE) {
+      echo '{"success": true, "err": "none"}';
+    } else {
+      echo '{"success": false, "err": "' .  $username_err . ' '. $topic_id_err . ' '. $knowledge_level_err .'"}';
+    }
   } else {
-    echo '{"success": false, "err": ' .  $username_err . ' '. $topic_id_err . ' '. $knowledge_level_err .'}';
+    echo '{"success": false, "err": "' .  $username_err . ' '. $topic_id_err . ' '. $knowledge_level_err .'"}';
   }
+  
 
   //$result = $stmt->get_result();
   //echo_json_encode_db($result);

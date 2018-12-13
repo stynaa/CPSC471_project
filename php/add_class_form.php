@@ -37,7 +37,7 @@ Open Enrollment:
 <label>
     <input type="radio" name="enroll_open" id="enroll_open" value=1 />Yes</label>
 <label>
-    <input type="radio" name="enroll_open" id="enroll_open" value=0 />No</label><br><br>
+    <input type="radio" name="enroll_open" id="enroll_open" value=2 />No</label><br><br>
 <br><button type="button" onclick="loadAddClassForm()">Submit</button>
 
 <!-- Need to link: class_id, tutor_uname, topic_id -->

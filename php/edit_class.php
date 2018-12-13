@@ -17,53 +17,77 @@ if (mysqli_connect_errno($conn))
   $stmt->bind_param("ssbii", $name, $description, $enroll_open, $topic, $class_id);
 
   $class_idErr = $nameErr = $descriptionErr = $enroll_openErr = $tutor_unameErr = $topicErr = "";
+  $error = false;
 
   if (empty($_POST["class_id"])) {
-    $class_idErr = "Class selection is required";
+    $error = true;
+    $class_idErr = "Class selection is required. ";
   } else {
     $class_id = test_input($_POST["class_id"]);
+    if (!isa_number($class_id)) {
+      $error = true;
+      $class_idErr = "Class ID must be a number. ";
+    }
   }
 
   if (empty($_POST["name"])) {
-    $nameErr = "Class name is required";
+    $error = true;
+    $nameErr = "Class name is required. ";
   } else {
     $name = test_input($_POST["name"]);
+    if (!isa_classname($name)) {
+      $error = true;
+      $nameErr = "Class name must be max 64 characters. Please enter a valid class name. ";
+    }
   }
 
   if (empty($_POST["description"])) {
     $descriptionErr = "";
   } else {
     $description = test_input($_POST["description"]);
+    if (!isa_comment($description)) {
+      $error = true;
+      $descriptionErr = "Description must be max 500 characters. Please enter a valid description. ";
+    }
   }
 
-  if (empty($_POST["enroll_open"])) {
-    $enroll_openErr = "Enrollment setting is required";
+  if (empty($_POST["enroll_open"]) || $_POST["enroll_open"] == 0) {
+    $error = true;
+    $enroll_openErr = "Enrollment setting is required. ";
   } else {
     if (empty($_POST["enroll_open"]) == 1) {
       $enroll_open = TRUE;
-    } else if (empty($_POST["enroll_open"]) == 0) {
+    } else if (empty($_POST["enroll_open"]) == 2) {
       $enroll_open = FALSE;
     } else {
-      $enroll_openErr = "Enrollment setting is required";
+      $error = true;
+      $enroll_openErr = "Enrollment setting is required. ";
     }
 
   }
 
   if (empty($_POST["topic"])) {
-    $topicErr = "Topic is required";
+    $error = true;
+    $topicErr = "Topic is required. ";
   } else {
     $topic = test_input($_POST["topic"]);
     // check if topic ID 
-    if (!preg_match("/^[0-9]*$/",$topic)) {
-      $topicErr = "Topic ID not valid (backend issue)"; 
+    if (!isa_number($topic)) {
+      $error = true;
+      $topicErr = "Topic ID is not valid. "; 
     }
   }
 
-  if ($stmt->execute() === TRUE) {
-    echo '{"success": true, "err": "none"}';
+  if (!$error) {
+    if ($stmt->execute() === TRUE) {
+      echo '{"success": true, "err": "none"}';
+    } else {
+      echo '{"success": false, "err": "' . $class_idErr . $nameErr . $descriptionErr . $enroll_openErr . $tutor_unameErr . $topicErr .'"}';
+    }
   } else {
-    echo '{"success": false, "err": ' . $class_idErr . $nameErr . $descriptionErr . $enroll_openErr . $tutor_unameErr . $topicErr .'}';
+    echo '{"success": false, "err": "' . $class_idErr . $nameErr . $descriptionErr . $enroll_openErr . $tutor_unameErr . $topicErr .'"}';
   }
+  
 
   //$result = $stmt->get_result();
   //echo_json_encode_db($result);

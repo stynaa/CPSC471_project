@@ -9,8 +9,10 @@ function loadAddLocationForm() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            if (this.responseText=="SUCCESS") {
+            let result = JSON.parse(this.responseText);
+            if (result.success) {
                 console.log("new location added.");
+                alert("New location added.");
             } else {
                 console.log("error: unable to add new location.");
                 alert("Error: " + result.err);
@@ -34,6 +36,7 @@ function loadAddClassForm() {
             let result = JSON.parse(this.responseText);
             if (result.success) {
                 console.log("new class added.");
+                alert("New class added.");
             } else {
                 console.log(result.err);
                 alert("Error: " + result.err);
@@ -58,6 +61,7 @@ function loadEditClassForm() {
             let result = JSON.parse(this.responseText);
             if (result.success) {
                 console.log("class edited.");
+                alert("Class edited.");
             } else {
                 console.log(result.err);
                 alert("Error: " + result.err);
@@ -79,6 +83,7 @@ function loadAddTopicKnowledgeForm() {
             let result = JSON.parse(this.responseText);
             if (result.success) {
                 console.log("new topic knowledge added.");
+                alert("New topic knowledge added.");
             } else {
                 console.log(result.err);
                 alert("Error: " + result.err);
@@ -102,6 +107,7 @@ function loadAddStudentForm() {
             let result = JSON.parse(this.responseText);
             if (result.success) {
                 console.log("Success: student added.");
+                alert("Student added.");
             } else {
                 console.log(result.err);
                 alert("Error: " + result.err);
@@ -126,6 +132,7 @@ function loadEditStudentForm() {
             let result = JSON.parse(this.responseText);
             if (result.success) {
                 console.log("Success: student edited.");
+                alert("Student edited. ");
             } else {
                 console.log(result.err);
                 alert("Error: " + result.err);
@@ -148,6 +155,7 @@ function loadAddTopicForm() {
             let result = JSON.parse(this.responseText);
             if (result.success) {
                 console.log("Success: topic added.");
+                alert("Topic added.");
             } else {
                 console.log(result.err);
                 alert("Error: " + result.err);
@@ -175,7 +183,8 @@ function loadAddSessionForm() {
             console.log(this.responseText);
             let result = JSON.parse(this.responseText);
             if (result.success) {
-                console.log("Success: topic added.");
+                console.log("Success: session added.");
+                alert("Session added.");
             } else {
                 console.log(result.err);
                 alert("Error: " + result.err);
@@ -203,7 +212,8 @@ function loadEditSessionForm() {
             console.log(this.responseText);
             let result = JSON.parse(this.responseText);
             if (result.success) {
-                console.log("Success: topic added.");
+                console.log("Success: session edited.");
+                alert("Session edited.");
             } else {
                 console.log(result.err);
                 alert("Error: " + result.err);
@@ -226,6 +236,7 @@ function loadEnrollStudentForm() {
             let result = JSON.parse(this.responseText);
             if (result.success) {
                 console.log("Success: student enrolled.");
+                alert("Student enrolled.");
             } else {
                 console.log(result.err);
                 alert("Error: " + result.err);
@@ -249,6 +260,7 @@ function loadAddReviewForm() {
             let result = JSON.parse(this.responseText);
             if (result.success) {
                 console.log("Success: review saved.");
+                alert("Review saved. ");
             } else {
                 console.log(result.err);
                 alert("Error: " + result.err);

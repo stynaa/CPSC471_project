@@ -23,7 +23,7 @@ if (mysqli_connect_errno($conn))
     if ($stmt->execute() === TRUE) {
         $result = $stmt->get_result();
       } else {
-        echo '{"success": false, "err": "Could not get tutor username." }';
+        echo '{"success": false, "err": "Could not get tutor username. " }';
       }
 
     while ($row = $result->fetch_assoc()) {
@@ -66,9 +66,9 @@ Session summary:<br><textarea id="summary" name="summary" rows="10" cols="30">We
     </textarea><br><br>
 Open Availability:
 <label>
-    <input type="radio" name="avail_flag" id="avail_flag" value=1 />Yes</label>
+    <input type="radio" name="avail_flag" id="avail_flag" value=1 checked='checked'/>Yes</label>
 <label>
-    <input type="radio" name="avail_flag" id="avail_flag" value=0 />No</label>
+    <input type="radio" name="avail_flag" id="avail_flag" value=2 />No</label>
 <br><br><button type="button" onclick="loadAddSessionForm()">Submit</button>
 
 <!-- Need to link: class_id, incrementing session number, location_id, sched_item_id, tutor_id -->
