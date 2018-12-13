@@ -72,6 +72,10 @@ if (mysqli_connect_errno($conn))
         $rating_er = "Rating is required. ";
     } else {
         $rating = test_input($_POST["rating"]);
+        if (!isa_rating($rating)) {
+            $error = true;
+            $rating_er = "Rating must be a number between 1-10. ";
+        }
     }
 
     if (!$error) {

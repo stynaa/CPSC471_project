@@ -56,12 +56,12 @@
   function isa_starttime($data) {
     //is in the future
     $result = "";
+    date_default_timezone_set('America/Edmonton');
     $dateTime = DateTime::createFromFormat('Y-m-d H:i:s', $data);
     $errors = DateTime::getLastErrors();
     if (!empty($errors['warning_count'])) {
       $result = "Strictly speaking, that date was invalid! Please enter a valid start time. ";
     }
-    date_default_timezone_set('America/Edmonton');
     $currentDate = date('Y-m-d H:i:s', time());
     if ($currentDate > $dateTime) {
       $result = $result . "Please enter a start time in the future. ";
@@ -73,6 +73,7 @@
   function isa_endtime($data, $st) {
     //is after starttime
     $result = "";
+    date_default_timezone_set('America/Edmonton');
     $dateTime = DateTime::createFromFormat('Y-m-d H:i:s', $data);
     $errors = DateTime::getLastErrors();
     if (!empty($errors['warning_count'])) {
@@ -88,5 +89,9 @@
 
   function isa_comment($data) {
     return (strlen($data) < 501);
+  }
+
+  function isa_rating($data) {
+    return (isa_number($data) && $data >= 1 && $data <= 10);
   }
   ?>
