@@ -21,7 +21,7 @@ if (mysqli_connect_errno($conn))
 
   if (empty($_POST["class_id"])) {
     $error = true;
-    $class_idErr = "Class selection is required";
+    $class_idErr = "Class selection is required. ";
   } else {
     $class_id = test_input($_POST["class_id"]);
     if (!isa_number($class_id)) {
@@ -32,7 +32,7 @@ if (mysqli_connect_errno($conn))
 
   if (empty($_POST["name"])) {
     $error = true;
-    $nameErr = "Class name is required";
+    $nameErr = "Class name is required. ";
   } else {
     $name = test_input($_POST["name"]);
     if (!isa_classname($name)) {
@@ -51,24 +51,24 @@ if (mysqli_connect_errno($conn))
     }
   }
 
-  if (empty($_POST["enroll_open"])) {
+  if (empty($_POST["enroll_open"]) || $_POST["enroll_open"] == 0) {
     $error = true;
-    $enroll_openErr = "Enrollment setting is required";
+    $enroll_openErr = "Enrollment setting is required. ";
   } else {
     if (empty($_POST["enroll_open"]) == 1) {
       $enroll_open = TRUE;
-    } else if (empty($_POST["enroll_open"]) == 0) {
+    } else if (empty($_POST["enroll_open"]) == 2) {
       $enroll_open = FALSE;
     } else {
       $error = true;
-      $enroll_openErr = "Enrollment setting value is invalid. ";
+      $enroll_openErr = "Enrollment setting is required. ";
     }
 
   }
 
   if (empty($_POST["topic"])) {
     $error = true;
-    $topicErr = "Topic is required";
+    $topicErr = "Topic is required. ";
   } else {
     $topic = test_input($_POST["topic"]);
     // check if topic ID 

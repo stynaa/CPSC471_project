@@ -66,9 +66,9 @@ Session summary:<br><textarea id="summary" name="summary" rows="10" cols="30">We
     </textarea><br><br>
 Open Availability:
 <label>
-    <input type="radio" name="avail_flag" id="avail_flag" value=1 />Yes</label>
+    <input type="radio" name="avail_flag" id="avail_flag" value=1 checked='checked'/>Yes</label>
 <label>
-    <input type="radio" name="avail_flag" id="avail_flag" value=0 />No</label>
+    <input type="radio" name="avail_flag" id="avail_flag" value=2 />No</label>
 <br><br><button type="button" onclick="loadAddSessionForm()">Submit</button>
 
 <!-- Need to link: class_id, incrementing session number, location_id, sched_item_id, tutor_id -->

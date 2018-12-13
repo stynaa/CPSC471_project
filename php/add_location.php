@@ -79,10 +79,10 @@ if (mysqli_connect_errno($conn))
     if ($stmt->execute() === TRUE) {
       echo '{"success": true, "err": "none"}';
     } else {
-      echo '{"success": false, "err": "' . $bld_number_er . $street_er . $city_er . $postal_code_er . $building_name_er .'"}';
+      echo '{"success": false, "err": "' . $building_name_er . $bld_number_er . $street_er . $city_er . $postal_code_er . '"}';
     }
   } else {
-    echo '{"success": false, "err": "' . $bld_number_er . $street_er . $city_er . $postal_code_er . $building_name_er .'"}';
+    echo '{"success": false, "err": "' . $building_name_er . $bld_number_er . $street_er . $city_er . $postal_code_er . '"}';
   }
   
 

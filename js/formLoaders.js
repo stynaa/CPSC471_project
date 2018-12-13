@@ -7,6 +7,7 @@ function loadAddClass() {
             let result = JSON.parse(this.responseText);
             if (result.success) {
                 console.log("Success.");
+                //alert("Class added. ");
             } else {
                 console.log(result.err);
                 alert("Error: " + result.err);
@@ -24,6 +25,7 @@ function loadAddLocation() {
             let result = JSON.parse(this.responseText);
             if (result.success) {
                 console.log("Success.");
+                //alert("Location added. ");
             } else {
                 console.log(result.err);
                 alert("Error: " + result.err);
@@ -41,6 +43,7 @@ function loadAddReview() {
             let result = JSON.parse(this.responseText);
             if (result.success) {
                 console.log("Success.");
+                //alert("Review added.");
             } else {
                 console.log(result.err);
                 alert("Error: " + result.err);

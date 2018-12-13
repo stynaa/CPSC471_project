@@ -36,7 +36,7 @@ if (mysqli_connect_errno($conn))
     $end_time_er = "End time is required. ";
   } else {
     $end_time = test_input($_POST["end_time"]);
-    $end_time_er = isa_endtime($end_time);
+    $end_time_er = isa_endtime($end_time, $start_time);
     if (!empty($end_time_er)) {
       $error = true;
     }
@@ -46,13 +46,13 @@ if (mysqli_connect_errno($conn))
     $error = true;
     $avail_flag_er = "Availibility selection is required. ";
   } else {
-    if (empty($_POST["avail_flag"]) == 1) {
+    if ($_POST["avail_flag"] == 1) {
       $avail_flag = TRUE;
-    } else if (empty($_POST["avail_flag"]) == 0) {
+    } else if ($_POST["avail_flag"] == 2) {
       $avail_flag = FALSE;
     } else {
       $error = true;
-      $avail_flag_er = "Availibility selection value is invalid. ";
+      $avail_flag_er = "Availibility selection is required. ";
     }
   }
 
@@ -65,10 +65,10 @@ if (mysqli_connect_errno($conn))
       $result_id=$stmt->insert_id;
       $s1 = TRUE;
     } else {
-      echo '{"success": false, "err": "Could not add to database. ' . $start_time_er . $end_time_er . $date_er . $tutor_uname_er . $avail_flag_er .'"}';
+      $error = true;
     }
   } else {
-    echo '{"success": false, "err": "' . $start_time_er . $end_time_er . $date_er . $tutor_uname_er . $avail_flag_er .'"}';
+    $error = true;
   }
   
 
@@ -111,10 +111,10 @@ if (mysqli_connect_errno($conn))
     if ($stmt->execute() === TRUE) {
       $s2 = TRUE;
     } else {
-      echo '{"success": false, "err": "Could not add to database. ' . $class_id_er . $session_num_er . $summary_er . $location_id_er . $scheditem_id_er .'"}';
+      echo '{"success": false, "err": "Could not add to database. ' . $class_id_er . $session_num_er . $start_time_er . $end_time_er . $location_id_er . $summary_er . $avail_flag_er  . $tutor_uname_er . $scheditem_id_er .'"}';
     }
   } else {
-    echo '{"success": false, "err": "' . $class_id_er . $session_num_er . $summary_er . $location_id_er . $scheditem_id_er .'"}';
+    echo '{"success": false, "err": "' . $class_id_er . $session_num_er . $start_time_er . $end_time_er . $location_id_er . $summary_er . $avail_flag_er  . $tutor_uname_er . $scheditem_id_er .'"}';
   }
   
   //$result = $stmt->get_result();

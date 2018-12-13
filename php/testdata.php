@@ -37,9 +37,10 @@
     }
     //date_default_timezone_set('America/Edmonton');
     $currentDate = date('Y-m-d', time());
-    //if ($currentDate < $dateTime) {
+    $cc = DateTime::createFromFormat('Y-m-d', $currentDate);
+    if ($cc < $dateTime) {
       $result = $result . 'Date of birth cannot be in the future. Please enter a date of birth in the past. ' ;
-    //}
+    }
 
     return $result;
   }
@@ -57,13 +58,14 @@
     //is in the future
     $result = "";
     date_default_timezone_set('America/Edmonton');
-    $dateTime = DateTime::createFromFormat('Y-m-d H:i:s', $data);
+    $dateTime = DateTime::createFromFormat('Y-m-d*H:i', $data);
     $errors = DateTime::getLastErrors();
     if (!empty($errors['warning_count'])) {
-      $result = "Strictly speaking, that date was invalid! Please enter a valid start time. ";
+      $result = "Strictly speaking, that date was invalid! Please enter a valid start time. " . $data;
     }
-    $currentDate = date('Y-m-d H:i:s', time());
-    if ($currentDate > $dateTime) {
+    $currentDate = date('Y-m-d*H:i', time());
+    $cc = DateTime::createFromFormat('Y-m-d*H:i', $currentDate);
+    if ($cc > $dateTime) {
       $result = $result . "Please enter a start time in the future. ";
     }
 
@@ -74,14 +76,24 @@
     //is after starttime
     $result = "";
     date_default_timezone_set('America/Edmonton');
-    $dateTime = DateTime::createFromFormat('Y-m-d H:i:s', $data);
+    $dateTime = DateTime::createFromFormat('Y-m-d*H:i', $data);
     $errors = DateTime::getLastErrors();
     if (!empty($errors['warning_count'])) {
-      $result = "Strictly speaking, that date was invalid! Please enter a valid end time. ";
+      $result = "Strictly speaking, that date was invalid! Please enter a valid end time. " . $data;
     }
-    $startTime = DateTime::createFromFormat('Y-m-d H:i:s', $st);
+    $startTime = DateTime::createFromFormat('Y-m-d*H:i', $st);
+    
+    //test stuff
+    $currentDate = date('Y-m-d H:i', time());
+    $st = $startTime->format('Y-m-d H:i');
+    $cc = DateTime::createFromFormat('Y-m-d*H:i', $currentDate);
+    if ($startTime < $cc) {
+      $txt = " Start date is before current date. ";
+    }
+    //end of test stuff
+    
     if ($startTime > $dateTime) {
-      $result = $result . "Please enter an end time after the start time. ";
+      $result = $result . "Please enter an end time after the start time. " ;
     }
 
     return $result;
@@ -93,5 +105,9 @@
 
   function isa_rating($data) {
     return (isa_number($data) && $data >= 1 && $data <= 10);
+  }
+
+  function isa_emptyspace($data) {
+    return preg_match("/^ *$/", $data);
   }
   ?>

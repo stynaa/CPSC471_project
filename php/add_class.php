@@ -42,9 +42,12 @@ if (mysqli_connect_errno($conn))
   } else {
     if (empty($_POST["enroll_open"]) == 1) {
       $enroll_open = TRUE;
-    } else if (empty($_POST["enroll_open"]) == 0) {
+    } else if (empty($_POST["enroll_open"]) == 2) {
       $enroll_open = FALSE;
-    } 
+    } else {
+      $error = true;
+      $enroll_openErr = "Enrollment setting is required. ";
+    }
   }
 
   $tutor_uname = $_SESSION["username"];

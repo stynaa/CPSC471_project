@@ -18,7 +18,7 @@ if (mysqli_connect_errno($conn))
 
   if (empty($_POST["session_num"])) {
     $error = true;
-    $session_num_er = "Session number is required.";
+    $session_num_er = "Session number is required. ";
   } else {
     $session_num = test_input($_POST["session_num"]);
     if (!isa_number($session_num)) {
@@ -29,7 +29,7 @@ if (mysqli_connect_errno($conn))
 
   if (empty($_POST["class_id"])) {
     $error = true;
-    $class_id_er = "Class selection is required.";
+    $class_id_er = "Class selection is required. ";
   } else {
     $class_id = test_input($_POST["class_id"]);
     if(!isa_number($class_id)) {
@@ -43,7 +43,8 @@ if (mysqli_connect_errno($conn))
       $c1 = TRUE;
       $result = $stmt->get_result();
     } else {
-      echo '{"success": false, "err": "' . $session_num_er . $class_id_er . '"}';
+        $error = true;
+      //echo '{"success": false, "err": "' . $session_num_er . $class_id_er . '"}';
     }
 
   while ($row = $result->fetch_assoc()) {
@@ -58,7 +59,7 @@ if (mysqli_connect_errno($conn))
 
             if (empty($_POST["start_time"])) {
                 $error = true;
-                $start_time_er = "Start time is required.";
+                $start_time_er = "Start time is required. ";
             } else {
                 $start_time = test_input($_POST["start_time"]);
                 $start_time_er = isa_starttime($start_time);
@@ -82,13 +83,13 @@ if (mysqli_connect_errno($conn))
                 $error = true;
                 $avail_flag_er = "Availibility selection is required. ";
             } else {
-                if (empty($_POST["avail_flag"]) == 1) {
+                if ($_POST["avail_flag"] == 1) {
                     $avail_flag = TRUE;
-                } else if (empty($_POST["avail_flag"]) == 0) {
+                } else if ($_POST["avail_flag"] == 2) {
                     $avail_flag = FALSE;
                 } else {
                     $error = true;
-                    $avail_flag_Er = "Availibility selection is invalid. ";
+                    $avail_flag_Er = "Availibility selection is required ";
                 }
             }
 
@@ -100,10 +101,12 @@ if (mysqli_connect_errno($conn))
                     $result_id=$stmt->insert_id;
                     $c2 = TRUE;
                 } else {
-                    echo '{"success": false, "err": "Insert-1: ' . $start_time_er . $end_time_er . $tutor_uname_er . $avail_flag_er .'"}';
+                    $error = true;
+                    //echo '{"success": false, "err": "Insert-1: ' . $session_num_er . $class_id_er . $start_time_er . $end_time_er . $tutor_uname_er . $avail_flag_er .'"}';
                 }
             } else {
-                echo '{"success": false, "err": "' . $start_time_er . $end_time_er . $tutor_uname_er . $avail_flag_er .'"}';
+                $error = true;
+                //echo '{"success": false, "err": "' . $session_num_er . $class_id_er . $start_time_er . $end_time_er . $tutor_uname_er . $avail_flag_er .'"}';
             }
             
 
@@ -141,10 +144,10 @@ if (mysqli_connect_errno($conn))
                 if ($stmt->execute() === TRUE) {
                     $c3 = TRUE;
                 } else {
-                    echo '{"success": false, "err": "insert-2: ' . $sched_item_id . $class_id . $session_num . $summary . $location_id .'"}';
+                    echo '{"success": false, "err": "insert-2: ' . $session_num_er . $class_id_er . $start_time_er . $end_time_er . $tutor_uname_er . $avail_flag_er . $sched_item_id . $location_id .'"}';
                 }
             } else {
-                echo '{"success": false, "err": "' . $sched_item_id . $class_id . $session_num . $summary . $location_id .'"}';
+                echo '{"success": false, "err": "' . $session_num_er . $class_id_er . $start_time_er . $end_time_er . $tutor_uname_er . $avail_flag_er . $sched_item_id . $location_id .'"}';
             }
             
 
@@ -184,10 +187,11 @@ if (mysqli_connect_errno($conn))
                 if ($stmt->execute() === TRUE) {
                     $c4 = TRUE;
                 } else {
-                    echo '{"success": false, "err": "update-1: ' . $class_id_er . $session_num_er . $summary_er . $location_id_er .'"}';
+                    $error = true;
+                    //echo '{"success": false, "err": "update-1: ' . $class_id_er . $session_num_er . $summary_er . $location_id_er .'"}';
                 }
             } else {
-                echo '{"success": false, "err": "' . $class_id_er . $session_num_er . $summary_er . $location_id_er .'"}';
+                //echo '{"success": false, "err": "' . $class_id_er . $session_num_er . $summary_er . $location_id_er .'"}';
             }
             
 
@@ -204,10 +208,11 @@ if (mysqli_connect_errno($conn))
                     $result = $stmt->get_result();
                     
                 } else {
-                    echo '{"success": false, "err": "update-2: could not get sched_item_id with ' . $class_id . ' ' . $session_num .'"}';
+                    $error = true;
+                    $q_er = "Could not get sched_item_id with " . $class_id . ' and ' . $session_num .' ';
                 }
             } else {
-                echo '{"success": false, "err": "Could not get sched_item_id with ' . $class_id . ' ' . $session_num .'"}';
+                //echo '{"success": false, "err": "Could not get sched_item_id with ' . $class_id . ' ' . $session_num .'"}';
             }
             
 
@@ -226,7 +231,7 @@ if (mysqli_connect_errno($conn))
 
             if (empty($_POST["start_time"])) {
                 $error = true;
-                $start_time_er = "Start time is required.";
+                $start_time_er = "Start time is required. ";
             } else {
                 $start_time = test_input($_POST["start_time"]);
                 $start_time_er = isa_starttime($start_time);
@@ -245,18 +250,19 @@ if (mysqli_connect_errno($conn))
                     $error = true;
                 }
             }
-
+            //$a = $_POST["avail_flag"];
             if (empty($_POST["avail_flag"])) {
                 $error = true;
+                
                 $avail_flag_er = "Availibility selection is required. ";
             } else {
-                if (empty($_POST["avail_flag"]) == 1) {
+                if ($_POST["avail_flag"] ==1) {
                     $avail_flag = TRUE;
-                } else if (empty($_POST["avail_flag"]) == 0) {
+                } else if ($_POST["avail_flag"] ==2) {
                     $avail_flag = FALSE;
                 } else {
                     $error = true;
-                    $avail_flag_Er = "Availibility selection is invalid. ";
+                    $avail_flag_er = "Availibility selection is required. ";
                 }
             }
 
@@ -266,10 +272,10 @@ if (mysqli_connect_errno($conn))
                 if ($stmt->execute() === TRUE) {
                     $c6 = TRUE;
                 } else {
-                echo '{"success": false, "err": "update-3: ' . $start_time_er . $end_time_er . $tutor_uname_er . $avail_flag_er .'"}';
+                echo '{"success": false, "err": "update-3: ' . $class_id_er . $session_num_er . $summary_er . $location_id_er . $start_time_er . $end_time_er . $tutor_uname_er . $avail_flag_er . $q_er .'"}';
                 }
             } else {
-                echo '{"success": false, "err": "' . $start_time_er . $end_time_er . $tutor_uname_er . $avail_flag_er .'"}';
+                echo '{"success": false, "err": "' . $class_id_er . $session_num_er . $summary_er . $location_id_er . $start_time_er . $end_time_er . $tutor_uname_er . $avail_flag_er . $q_er .'"}';
             }
     
       }

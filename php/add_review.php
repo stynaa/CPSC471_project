@@ -60,6 +60,10 @@ if (mysqli_connect_errno($conn))
         $comment_er = "Comment is required. ";
     } else {
         $comment = test_input($_POST["comment"]);
+        if (isa_emptyspace($comment)) {
+            $error = true;
+            $comment_er = "Comment is required. ";
+        }
         if (!isa_comment($comment)) {
             $error = true;
             $comment_er = "Comment must be max 500 characters. Please enter valid comment. ";
