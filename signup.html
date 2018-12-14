@@ -67,7 +67,7 @@
                         if (x.parentCreated) {
                             document.getElementById("content").innerHTML = "<p>Congrats! You're signed up. Log in above.</p>";
                         } else {
-                            //figure out error..
+                            alert("Error: " + x.err);
                         }
                     }
                 };
@@ -94,13 +94,11 @@
                 let xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
-                        console.log(this.responseText);
                         let x = JSON.parse(this.responseText);
-                        console.log(x);
                         if (x.tutorCreated) {
                             document.getElementById("content").innerHTML = "<p>Congrats! You're signed up. Log in above.</p>";
                         } else {
-                            //figure out error msgs
+                            alert("Error: " + x.err);
                         }
                     }
                 };

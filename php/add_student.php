@@ -62,7 +62,7 @@ if (mysqli_connect_errno($conn))
   } else {
     echo '{"success": false, "err": "' . $parent_uname_er . $first_name_er . $last_name_er . $dob_er . '" }';
   }
-  
+
 
   include "disconndb.php";
 ?>

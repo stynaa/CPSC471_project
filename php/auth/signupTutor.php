@@ -1,24 +1,50 @@
 <?php
 require "../conndb.php";
+require "../testdata.php";
 /* your php code below
 * $conn is database connection
 * $_SESSION["username"] is username of logged in user
 */
 
 //validate & verify & cleanse input data (if any)
-$username = $_POST["username"];
-$pw1 = $_POST["pw"];
-$pw2 = $_POST["pwcheck"];
-$email = $_POST["email"];
-$phone = $_POST["phone"];
-$first_name = $_POST["first_name"];
-$last_name = $_POST["last_name"];
-$bio = $_POST["bio"];
-$education = $_POST["education"];
-$housenum = $_POST["housenum"];
-$street = $_POST["street"];
-$city = $_POST["city"];
-$pcode = $_POST["pcode"];
+$username = test_input($_POST["username"]);
+if (!isa_username($username)) {
+    echo '{"tutorCreated": false, "err": "Username not valid: '. $_POST["username"].'"}';
+    die();
+}
+$pw1 = test_input($_POST["pw"]);
+$pw2 = test_input($_POST["pwcheck"]);
+if (!($pw1 == $pw2)) {
+    echo '{"tutorCreated": false, "err": "Passwords do not match."}';
+    die();
+}
+$email = test_input($_POST["email"]);
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo '{"tutorCreated": false, "err": "Email not valid."}';
+    die();
+}
+$phone = test_input($_POST["phone"]);
+if (!isa_phone($phone)) {
+    echo '{"tutorCreated": false, "err": "Phone number not valid."}';
+    die();
+}
+$first_name = test_input($_POST["first_name"]);
+$last_name = test_input($_POST["last_name"]);
+if (!isa_name($first_name) || !isa_name($last_name)) {
+    echo '{"tutorCreated": false, "err": "Name not valid."}';
+    die();
+}
+
+$bio = test_input($_POST["bio"]);
+$education = test_input($_POST["education"]);
+$housenum = test_input($_POST["housenum"]);
+$street = test_input($_POST["street"]);
+$city = test_input($_POST["city"]);
+$pcode = test_input($_POST["pcode"]);
+if (!isa_number($housenum)) {
+    echo '{"tutorCreated": false, "err": "Address not valid."}';
+    die();
+}
 
 $password = $pw1;
 
