@@ -17,8 +17,8 @@
   }
 
   function isa_username($data) {
-    //no more than 15 
-    return (preg_match("/^[a-zA-Z0-9]{15}$/",$data));
+    //no more than 15
+    return (preg_match("/^[a-zA-Z0-9]{0,15}$/",$data));
   }
 
   function isa_name($data) {
@@ -82,7 +82,7 @@
       $result = "Strictly speaking, that date was invalid! Please enter a valid end time. " . $data;
     }
     $startTime = DateTime::createFromFormat('Y-m-d*H:i', $st);
-    
+
     //test stuff
     $currentDate = date('Y-m-d H:i', time());
     $st = $startTime->format('Y-m-d H:i');
@@ -91,7 +91,7 @@
       $txt = " Start date is before current date. ";
     }
     //end of test stuff
-    
+
     if ($startTime > $dateTime) {
       $result = $result . "Please enter an end time after the start time. " ;
     }
