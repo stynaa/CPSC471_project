@@ -6,33 +6,29 @@ require "../testdata.php";
 * $_SESSION["username"] is username of logged in user
 */
 
+$errMsg = "";
 //validate & verify & cleanse input data (if any)
 $username = test_input($_POST["username"]);
 if (!isa_username($username)) {
-    echo '{"tutorCreated": false, "err": "Username not valid: '. $_POST["username"].'"}';
-    die();
+    $errMsg .= "Username not valid. ";
 }
 $pw1 = test_input($_POST["pw"]);
 $pw2 = test_input($_POST["pwcheck"]);
 if (!($pw1 == $pw2)) {
-    echo '{"tutorCreated": false, "err": "Passwords do not match."}';
-    die();
+    $errMsg .= "Passwords do not match. ";
 }
 $email = test_input($_POST["email"]);
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo '{"tutorCreated": false, "err": "Email not valid."}';
-    die();
+    $errMsg .= "Email not valid. ";
 }
 $phone = test_input($_POST["phone"]);
 if (!isa_phone($phone)) {
-    echo '{"tutorCreated": false, "err": "Phone number not valid."}';
-    die();
+    $errMsg .= "Phone number not valid. ";
 }
 $first_name = test_input($_POST["first_name"]);
 $last_name = test_input($_POST["last_name"]);
 if (!isa_name($first_name) || !isa_name($last_name)) {
-    echo '{"tutorCreated": false, "err": "Name not valid."}';
-    die();
+    $errMsg .= "Name not valid. ";
 }
 
 $bio = test_input($_POST["bio"]);
@@ -42,7 +38,11 @@ $street = test_input($_POST["street"]);
 $city = test_input($_POST["city"]);
 $pcode = test_input($_POST["pcode"]);
 if (!isa_number($housenum)) {
-    echo '{"tutorCreated": false, "err": "Address not valid."}';
+    $errMsg .= "Address not valid.";
+}
+
+if (!$errMsg == "") {
+    echo '{"tutorCreated": false, "err": "' . $errMsg . '"}';
     die();
 }
 
