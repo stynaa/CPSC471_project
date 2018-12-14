@@ -1,10 +1,10 @@
 <?php
     session_start();
-    $servername = "104.157.39.239"; //"192.168.1.69" | 104.157.39.239
+    $servername = "192.168.1.69"; //"192.168.1.69" | 104.157.39.239
     $username = "cpsc471";
     $password = "pw";
     $database = "tutorDB";
-    $port = 19239; //3306 | 19239;
+    $port = 3306; //3306 | 19239;
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $database, $port);
