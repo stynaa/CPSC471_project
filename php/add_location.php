@@ -59,8 +59,8 @@ if (mysqli_connect_errno($conn))
   } else {
     $postal_code = test_input($_POST["postal_code"]);
     if(!isa_postalcode($postal_code)) {
-//        $error = true;
-//        $postal_code_er = "Invalid postal code. Please write in format A1A 1A1. ";
+        $error = true;
+        $postal_code_er = "Invalid postal code. Please write in format A1A 1A1. ";
     }
   }
 

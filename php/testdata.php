@@ -51,7 +51,7 @@
   }
 
   function isa_postalcode($data) {
-    $i = preg_match("/^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}$/", $data);
+    return preg_match("/^[ABCEGHJKLMNPRSTVXY]{1}[0-9]{1}[A-Z]{1} *[0-9]{1}[A-Z]{1}[0-9]{1}$/", $data);
   }
 
   function isa_starttime($data) {
