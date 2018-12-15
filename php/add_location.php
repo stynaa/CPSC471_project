@@ -9,7 +9,7 @@ if (mysqli_connect_errno($conn))
 
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
-  
+
   //@class_id, @name, @description, @enroll_open, @tutor_name, @topic
 
   // prepare and bind
@@ -27,7 +27,7 @@ if (mysqli_connect_errno($conn))
     // check if building number is a number
     if (!isa_number($bld_number)) {
       $error = true;
-      $bld_number_er = "Building number is not a number. Please enter a valid building number. "; 
+      $bld_number_er = "Building number is not a number. Please enter a valid building number. ";
     }
   }
 
@@ -59,8 +59,8 @@ if (mysqli_connect_errno($conn))
   } else {
     $postal_code = test_input($_POST["postal_code"]);
     if(!isa_postalcode($postal_code)) {
-        $error = true;
-        $postal_code_er = "Invalid postal code. Please write in format A1A 1A1. ";
+//        $error = true;
+//        $postal_code_er = "Invalid postal code. Please write in format A1A 1A1. ";
     }
   }
 
@@ -84,7 +84,7 @@ if (mysqli_connect_errno($conn))
   } else {
     echo '{"success": false, "err": "' . $building_name_er . $bld_number_er . $street_er . $city_er . $postal_code_er . '"}';
   }
-  
+
 
   //$result = $stmt->get_result();
   //echo_json_encode_db($result);
