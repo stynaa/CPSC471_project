@@ -37,7 +37,7 @@ $housenum = test_input($_POST["housenum"]);
 $street = test_input($_POST["street"]);
 $city = test_input($_POST["city"]);
 $pcode = test_input($_POST["pcode"]);
-if (!isa_number($housenum)) {
+if (!isa_number($housenum) || !isa_postalcode($pcode)) {
     $errMsg .= "Address not valid.";
 }
 
