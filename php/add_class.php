@@ -26,7 +26,7 @@ if (mysqli_connect_errno($conn))
     $name = test_input($_POST["name"]);
     if (!isa_classname($name)) {
       $error = true;
-      $nameErr = $nameErr + "Class name is too long. Please enter valid class name. ";
+      $nameErr = "Class name is too long. Please enter valid class name. ";
     } 
   }
 
