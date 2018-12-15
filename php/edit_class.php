@@ -51,15 +51,16 @@ if (mysqli_connect_errno($conn))
     }
   }
 
-  if (empty($_POST["enroll_open"]) || $_POST["enroll_open"] == 0) {
+  if (empty($_POST["enroll_open"])) {
     $error = true;
     $enroll_openErr = "Enrollment setting is required. ";
   } else {
-    if (empty($_POST["enroll_open"]) == 1) {
+    if ($_POST["enroll_open"] == 'yes') {
       $enroll_open = TRUE;
-    } else if (empty($_POST["enroll_open"]) == 2) {
+    } else if ($_POST["enroll_open"] == 'no') {
       $enroll_open = FALSE;
     } else {
+      //$enroll_open = TRUE;
       $error = true;
       $enroll_openErr = "Enrollment setting is required. ";
     }
