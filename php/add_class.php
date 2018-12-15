@@ -40,9 +40,9 @@ if (mysqli_connect_errno($conn))
     $error = true;
     $enroll_openErr = "Enrollment setting is required. ";
   } else {
-    if ($_POST["enroll_open"] === 1) {
+    if ($_POST["enroll_open"] == 'yes') {
       $enroll_open = TRUE;
-    } else if ($_POST["enroll_open"] === 0) {
+    } else if ($_POST["enroll_open"] == 'no') {
       $enroll_open = FALSE;
     } else {
       $error = true;
